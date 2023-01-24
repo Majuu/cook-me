@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": false,
+    "prettier.enable": false,
+    "eslint.format.enable": true,
+    "eslint.enable": false
+}

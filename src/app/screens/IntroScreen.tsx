@@ -6,8 +6,8 @@ import {textPlaceholders} from '../consts/text-placeholders.const';
 import {FontsEnum} from '../enums/fonts.enum';
 import {ColorsEnum} from '../enums/colors.enum';
 import {ScreensEnum} from '../enums/screens.enum';
+import { StackActions } from '@react-navigation/native';
 // import Cake from '../../../assets/images/pie.svg';
-import FullScreenContainer from '../components/FullScreenContainer';
 
 interface IntroScreenProps {
   navigation: Route;
@@ -40,8 +40,13 @@ const IntroScreen: FunctionComponent<IntroScreenProps> = ({
 }: IntroScreenProps): React.ReactElement => {
   // const imageDimensions = 240;
 
+  const navigateToMenuAndRemoveFromStack = () => {
+    navigation.dispatch(
+      StackActions.replace(ScreensEnum.MENU)
+    )
+  }
+
   return (
-    <FullScreenContainer>
       <View style={styles.container}>
         <CustomText
           style={styles.header}
@@ -65,10 +70,9 @@ const IntroScreen: FunctionComponent<IntroScreenProps> = ({
         <CustomButton
           style={styles.button}
           text={textPlaceholders.introScreen.letsStart}
-          onPress={(): void => navigation.navigate(ScreensEnum.MENU)}
+          onPress={navigateToMenuAndRemoveFromStack}
         />
       </View>
-    </FullScreenContainer>
   );
 };
 

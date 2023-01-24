@@ -1,7 +1,8 @@
 import { RecipeListItem } from '../interfaces/recipe.interface';
 
 // url works only if json server is live
-const url = 'http://10.0.2.2:3000';
+// const url = 'http://10.0.2.2:3000'; // android?
+const url = 'http://localhost:3000';
 
 export async function getAllRecipes(): Promise<RecipeListItem> {
   const response = await fetch(`${url}/recipes`);

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import {StyleSheet, View} from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,8 +10,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const FullScreenContainer: React.FC<{children: React.ReactNode}> = ({
-  children,
-}) => <View style={styles.container}>{children}</View>;
+const FullScreenContainer: React.FC<PropsWithChildren> = ({
+  children
+}) => {
+  return <View style={[styles.container, { paddingTop: getStatusBarHeight() }]}>{children}</View>;}
 
 export default FullScreenContainer;

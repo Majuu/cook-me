@@ -1,13 +1,23 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Animated, Modal, ScrollView, StyleSheet, View } from 'react-native';
-import { connect } from 'react-redux';
-import RecipeContent from '../RecipeContent';
-import { modalActions } from '../../store/actions/modal.actions';
+// import React, { FunctionComponent, useState } from 'react';
+// import { Animated, Modal, ScrollView, StyleSheet, View } from 'react-native';
+// import { connect } from 'react-redux';
+// import RecipeContent from '../RecipeContent';
+// import { modalActions } from '../../store/actions/modal.actions';
 import StepIndicator from 'react-native-step-indicator';
-import CustomText from './CustomText';
-import CloseButton from '../../../../assets/images/close.svg';
-import { FontsEnum } from '../../enums/fonts.enum';
-import { ColorsEnum } from '../../enums/colors.enum';
+// import CustomText from './CustomText';
+// import CloseButton from '../../../../assets/images/close.svg';
+// import { FontsEnum } from '../../enums/fonts.enum';
+// import { ColorsEnum } from '../../enums/colors.enum';
+
+import React, { FunctionComponent, useState } from "react";
+import { StyleSheet, Modal, View, ScrollView } from "react-native";
+// import StepIndicator from "react-native-step-indicator/lib/typescript/src/types";
+import { connect } from "react-redux";
+import { ColorsEnum } from "../../enums/colors.enum";
+import { FontsEnum } from "../../enums/fonts.enum";
+import { modalActions } from "../../store/actions/modal.actions";
+import RecipeContent from "../RecipeContent";
+import CustomText from "./CustomText";
 
 interface CustomModalReduxStateInterface {
   modal: {
@@ -72,7 +82,7 @@ const CustomModal: FunctionComponent<CustomModalProps> = ({ item, modal, dispatc
   return (
     <Modal animationType={'fade'} visible={modal} transparent={true} animated={true}>
       <View style={styles.container}>
-        <CloseButton width={20} height={20} style={styles.closeButton} onPress={closeModal} />
+        {/* <CloseButton width={20} height={20} style={styles.closeButton} onPress={closeModal} /> */}
         <View style={styles.topContainerWrapper}>
           <StepIndicator
             labels={labels}

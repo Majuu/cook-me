@@ -1,6 +1,5 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent} from 'react';
 import {FlatList, Route, StyleSheet, Text, View} from 'react-native';
-import FullScreenContainer from '../components/FullScreenContainer';
 import {textPlaceholders} from '../consts/text-placeholders.const';
 // import Learn from '../../../assets/images/mold.svg';
 // import Menu from '../../../assets/images/menu.svg';
@@ -59,10 +58,10 @@ const MenuScreen: FunctionComponent<MenuScreenProps> = ({
     //   screenToNavigate: ScreensEnum.ADD_RECIPE
     // }
     {
-      id: 'learn',
-      title: textPlaceholders.menuScreen.learn,
+      id: 'list',
+      title: textPlaceholders.menuScreen.list,
       image: <Text>image</Text>,
-      screenToNavigate: ScreensEnum.LEARN_BASICS,
+      screenToNavigate: ScreensEnum.RECIPE_LIST,
     },
     {
       id: 'myList',
@@ -71,27 +70,19 @@ const MenuScreen: FunctionComponent<MenuScreenProps> = ({
       screenToNavigate: ScreensEnum.MY_RECIPES,
     },
     {
-      id: 'list',
-      title: textPlaceholders.menuScreen.list,
-      image: <Text>image</Text>,
-      screenToNavigate: ScreensEnum.RECIPE_LIST,
-    },
-    {
       id: 'add',
       title: textPlaceholders.menuScreen.addRecipe,
       image: <Text>image</Text>,
       screenToNavigate: ScreensEnum.ADD_RECIPE,
-    },
+    }
   ];
 
-  useEffect(() => {}, []);
-
   return (
-    <FullScreenContainer>
       <View style={styles.container}>
         <View>
           <FlatList
             data={data}
+            scrollEnabled={false}
             renderItem={({item}): React.ReactElement => (
               <MenuItem
                 screenToNavigate={item.screenToNavigate}
@@ -104,7 +95,6 @@ const MenuScreen: FunctionComponent<MenuScreenProps> = ({
           />
         </View>
       </View>
-    </FullScreenContainer>
   );
 };
 

@@ -34,8 +34,10 @@ const MenuItem: FunctionComponent<MenuItemProps> = ({ navigation, title, image, 
 
   return (
     <TouchableOpacity style={styles.listItem} onPress={navigateToScreen}>
+      <>
       <CustomText text={title} fontSize={textFontSize} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} />
       {image}
+      </>
     </TouchableOpacity>
   );
 };

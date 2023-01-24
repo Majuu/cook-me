@@ -135,6 +135,7 @@ import RecipeListScreen from './src/app/screens/RecipesScreen';
 import LearnBasicsScreen from './src/app/screens/BasicsScreen';
 import {ScreensEnum} from './src/app/enums/screens.enum';
 import AddRecipeScreen from './src/app/components/AddRecipe';
+import FullScreenContainer from './src/app/components/FullScreenContainer';
 
 interface StackedScreensInterface {
   name: ScreensEnum;
@@ -157,6 +158,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <NavigationContainer>
+            <FullScreenContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
             {this.stackScreens.map(
               (item: StackedScreensInterface): ReactElement => (
@@ -165,9 +167,10 @@ class App extends Component {
                   name={item.name}
                   component={item.component}
                 />
-              ),
-            )}
+                ),
+                )}
           </Stack.Navigator>
+                </FullScreenContainer>
         </NavigationContainer>
       </Provider>
     );

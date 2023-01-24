@@ -1,7 +1,7 @@
 import {modalActions} from '../actions/modal.actions';
 
 const initialState = {
-    isModalVisible: false
+    isModalVisible: false,
 };
 
 const modalReducer = (state = initialState, action: any) => {
@@ -9,21 +9,21 @@ const modalReducer = (state = initialState, action: any) => {
         case modalActions.SHOW_RECIPE_MODAL:
             return {
                 ...state,
-                isModalVisible: true
+                isModalVisible: true,
             };
         case modalActions.HIDE_RECIPE_MODAL:
             return {
                 ...state,
-                isModalVisible: false
+                isModalVisible: false,
             };
         default:
             return {
-                ...state
+                ...state,
             };
     }
 };
 
 export default {
     modalReducer,
-    initialState
+    initialState,
 };
