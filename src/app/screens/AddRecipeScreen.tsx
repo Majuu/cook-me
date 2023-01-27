@@ -35,9 +35,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  isFavouriteCheckbox: {
-    justifyContent: 'center'
-  },
   stepIndicator: {
     width: '100%',
   },
@@ -139,13 +136,18 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                       autoFocus={false}
                     />
                     <CustomPicker style={styles.inputsDistance} list={recipeCategories} onChange={setCategory} />
-                    <SlidingTimePicker style={styles.inputsDistance} step={5} maxValue={360} minValue={0} onValueChange={setTimeValue} timeValue={time} />
+                    <SlidingTimePicker style={styles.inputsDistance} step={15} maxValue={480} minValue={0} onValueChange={setTimeValue} timeValue={time} />
                     <CustomInput
                       placeholder={'Author'}
                       style={styles.inputsDistance}
                       onChange={handleChange('authors')}
                       value={values.authors}
                       autoFocus={false}
+                    />
+                     <CustomCheckBox
+                      text={'Add this recipe to favourites'}
+                      value={isAddedToFavourites}
+                      onValueChange={addToFavourites}
                     />
                   </>
                 )}
@@ -165,12 +167,6 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                       onChange={handleChange('description')}
                       value={values.description}
                       multiline
-                    />
-                    <CustomCheckBox
-                      text={'Add this recipe to favourites'}
-                      value={isAddedToFavourites}
-                      onValueChange={addToFavourites}
-                      style={styles.isFavouriteCheckbox}
                     />
                   </>
                 )}

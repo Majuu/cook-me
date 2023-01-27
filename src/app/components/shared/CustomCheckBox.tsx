@@ -14,16 +14,21 @@ interface CustomCheckBoxProps {
 
 const styles = StyleSheet.create({
   wrapper: {
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  checkbox: {
+    marginRight: 10
   }
 });
 
 const CustomCheckBox: FunctionComponent<CustomCheckBoxProps> = ({ text, value, onValueChange, style }) => {
   return (
     <View style={{ ...styles.wrapper, ...style }}>
-      <CheckBox value={value} onValueChange={onValueChange} />
+      <CheckBox value={value} tintColor={ColorsEnum.GRAY} onTintColor={ColorsEnum.GREEN} onCheckColor={ColorsEnum.GREEN} onValueChange={onValueChange} style={styles.checkbox} />
       <CustomText text={text} fontSize={17} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
     </View>
   );
