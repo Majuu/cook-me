@@ -17,6 +17,8 @@ import { AddRecipeValidationSchema } from '../helpers/validator';
 import SlidingTimePicker from '../components/SlidingTimePicker';
 import CustomStepIndicator from '../components/shared/CustomStepIndicator';
 import { RecipeCategories } from '../enums/recipe-categories.enum';
+import AddNewIngredient from '../components/AddNewIngredient';
+import { FlatList } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -123,7 +125,7 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
           initialValues={initialFormValues}
           onSubmit={(values) => addNewRecipe({ ...values, isFavourite: isAddedToFavourites, category, time })}
         >
-          {({ handleSubmit, handleChange, values }) => (
+          {({ handleSubmit, handleChange, values, setFieldValue }) => (
             <View style={styles.formWithButtonsContainer}>
               <View>
                 {currentPosition === 0 && (
@@ -135,7 +137,7 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                       value={values.title}
                       autoFocus={false}
                     />
-                    <CustomPicker style={styles.inputsDistance} list={recipeCategories} onChange={setCategory} />
+                    <CustomPicker placeholder={'Select category'} style={styles.inputsDistance} list={recipeCategories} onChange={setCategory} />
                     <SlidingTimePicker style={styles.inputsDistance} step={15} maxValue={480} minValue={0} onValueChange={setTimeValue} timeValue={time} />
                     <CustomInput
                       placeholder={'Author'}
@@ -152,12 +154,19 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                   </>
                 )}
                 {currentPosition == 1 && (
-                    <CustomText
-                      text={'Ingredients coming soon...'}
-                      fontSize={30}
-                      fontFamily={FontsEnum.SEN_BOLD}
-                      color={ColorsEnum.DARK_GREEN}
-                    />
+                  <>
+                  <AddNewIngredient onAddNewIngredient={(newIngredient: any) => {console.log(newIngredient); setFieldValue('ingredients', [...values.ingredients, newIngredient])}} />
+                    {/* TODO  ADD FLATLIST HERE FOR SCROLLING */}
+                    {values.ingredients.map((ingredient, index) => 
+                      <CustomText 
+                        fontFamily={FontsEnum.SEN_REGULAR} 
+                        color={ColorsEnum.GREEN} 
+                        fontSize={20} 
+                        text={`${index + 1}. ${ingredient.amount} ${ingredient.unit} ${ingredient.name}`} />
+                    )}
+
+                  
+                  </>
                 )}
                 {currentPosition == 2 && (
                   <>

@@ -29,7 +29,7 @@ const CustomCheckBox: FunctionComponent<CustomCheckBoxProps> = ({ text, value, o
   return (
     <View style={{ ...styles.wrapper, ...style }}>
       <CheckBox value={value} tintColor={ColorsEnum.GRAY} onTintColor={ColorsEnum.GREEN} onCheckColor={ColorsEnum.GREEN} onValueChange={onValueChange} style={styles.checkbox} />
-      <CustomText text={text} fontSize={17} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
+      <CustomText text={text} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
     </View>
   );
 };

@@ -1,0 +1,1 @@
+export const ingredientUnits: string[] = [ '-', 'g', 'kg', 'ml', 'l' ];

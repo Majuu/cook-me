@@ -1,6 +1,7 @@
 export interface RecipeIngredient {
   name: string;
   amount: number;
+  unit: string;
 }
 
 export interface RecipeListItem {

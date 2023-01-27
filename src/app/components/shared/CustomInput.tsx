@@ -8,10 +8,11 @@ interface CustomInputProps {
   placeholder: string;
   onChange: (e: string | ChangeEvent<any>) => void;
   //ToDo correct the typing
-  value: string;
+  value?: string;
   autoFocus?: boolean;
   multiline?: boolean;
   isSearchBar?: boolean;
+  numberedInput?: boolean;
   style?: HTMLStyleElement;
 }
 
@@ -61,6 +62,7 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
   autoFocus = false,
   multiline,
   isSearchBar = false,
+  numberedInput = false,
   style,
 }): React.ReactElement => {
   const containerStyles = useMemo(() => {
@@ -96,6 +98,7 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
         value={value}
         autoFocus={autoFocus}
         selectionColor={ColorsEnum.GREEN}
+        keyboardType={numberedInput ? 'numeric' : 'default'}
       />
     </View>
   );
