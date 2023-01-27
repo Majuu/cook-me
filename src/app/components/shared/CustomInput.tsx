@@ -95,6 +95,7 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
         onChangeText={onChange}
         value={value}
         autoFocus={autoFocus}
+        selectionColor={ColorsEnum.GREEN}
       />
     </View>
   );

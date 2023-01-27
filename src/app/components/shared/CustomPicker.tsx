@@ -1,48 +1,59 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import React, { Fragment, FunctionComponent } from 'react';
+import { StyleSheet } from 'react-native';
 import { ColorsEnum } from '../../enums/colors.enum';
-import { PastryListCategories } from '../../consts/pastry-categories.const';
+import SelectDropdown from 'react-native-select-dropdown';
+import { RecipeCategories } from '../../enums/recipe-categories.enum';
+import { FontsEnum } from '../../enums/fonts.enum';
 
 interface CustomPickerProps {
-  list: PastryListCategories[];
+  list: RecipeCategories[];
   onChange: Function;
-  value: string;
   style?: HTMLStyleElement;
 }
 
 const styles = StyleSheet.create({
-  container: {
+  buttonContainer: {
     borderWidth: 2,
     borderColor: ColorsEnum.GREEN,
     borderRadius: 15,
     borderStyle: 'solid',
     width: '100%',
-    height: 50
+    height: 45
   },
-  picker: {
+  buttonText: {
     color: ColorsEnum.DARK_GREEN,
-    width: 'auto',
-    height: '100%',
-    marginLeft: 8,
-    marginRight: 5
+    fontFamily: FontsEnum.SEN_REGULAR,
+    textAlign: 'left'
+  },
+  dropdown: {
+    borderWidth: 2,
+    borderColor: ColorsEnum.LIGHT_GREEN,
+    borderStyle: 'solid'
+  },
+  dropdownRow: {
+    borderBottomWidth: 2, 
+    borderBottomColor: ColorsEnum.LIGHT_GREEN
   }
 });
 
-const CustomPicker: FunctionComponent<CustomPickerProps> = ({ list, onChange, value, style }: CustomPickerProps): React.ReactElement => {
+const CustomPicker: FunctionComponent<CustomPickerProps> = ({ list, onChange, style }): React.ReactElement => {
   return (
-    <View style={{ ...styles.container, ...style }}>
-      <Picker
-        selectedValue={value}
-        onValueChange={(itemValue: number | string): void => onChange(itemValue)}
-        style={styles.picker}
-        mode={'dialog'}
-      >
-        {list.map((item) => (
-          <Picker.Item key={item.value} label={item.label} value={item.value} />
-        ))}
-      </Picker>
-    </View>
+    <Fragment>
+      <SelectDropdown
+        onChangeSearchInputText={() => {}}
+	      data={list}
+        defaultButtonText={'Select category'}
+        buttonTextStyle={styles.buttonText}
+        rowTextStyle={styles.buttonText}
+        dropdownStyle={styles.dropdown}
+        rowStyle={styles.dropdownRow}
+        onSelect={(selectedItem) => {
+          onChange(selectedItem)
+        }}
+        dropdownOverlayColor={'none'}
+        buttonStyle={{...styles.buttonContainer, ...style}}
+        />
+    </Fragment>
   );
 };
 

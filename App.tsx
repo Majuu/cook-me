@@ -134,7 +134,7 @@ import IntroScreen from './src/app/screens/IntroScreen';
 import RecipeListScreen from './src/app/screens/RecipesScreen';
 import LearnBasicsScreen from './src/app/screens/BasicsScreen';
 import {ScreensEnum} from './src/app/enums/screens.enum';
-import AddRecipeScreen from './src/app/components/AddRecipe';
+import AddRecipeScreen from './src/app/screens/AddRecipeScreen';
 import FullScreenContainer from './src/app/components/FullScreenContainer';
 
 interface StackedScreensInterface {

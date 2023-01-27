@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import StepIndicator, { StepIndicatorStyles } from 'react-native-step-indicator';
+import StepIndicator, {  } from 'react-native-step-indicator';
 import { ColorsEnum } from '../../enums/colors.enum';
 import { FontsEnum } from '../../enums/fonts.enum';
 import { StyleSheet, View, Text } from 'react-native';
+import { StepIndicatorStyles } from 'react-native-step-indicator/lib/typescript/src/types';
 
 interface CustomStepIndicatorProps {
   stepCount: number;
@@ -13,7 +14,7 @@ interface CustomStepIndicatorProps {
 
 const styles = StyleSheet.create({
   indicatorWrapper: {
-    marginBottom: 25
+    marginBottom: 30
   },
   stepLabel: {
     fontSize: 15,

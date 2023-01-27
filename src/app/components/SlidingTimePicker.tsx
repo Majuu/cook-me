@@ -11,6 +11,7 @@ interface SlidingTimePickerProps {
   step: number;
   onValueChange: (value: number) => void;
   timeValue: string;
+  style?: HTMLStyleElement
 }
 
 const styles = StyleSheet.create({
@@ -20,9 +21,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: ColorsEnum.GREEN,
     borderRadius: 15,
-    marginBottom: 20,
-    paddingTop: 15,
-    paddingBottom: 15,
+    padding: 15,
     display: 'flex',
     flexDirection: 'column'
   },
@@ -31,19 +30,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 5,
-    paddingLeft: 15,
-    paddingRight: 15
   }
 });
 
-const SlidingTimePicker: FunctionComponent<SlidingTimePickerProps> = ({ maxValue, minValue, step, onValueChange, timeValue }) => {
+const SlidingTimePicker: FunctionComponent<SlidingTimePickerProps> = ({ maxValue, minValue, step, onValueChange, timeValue, style }) => {
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, ...style}}>
       <View style={styles.headerWrapper}>
         <CustomText text={'Time duration'} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
         <CustomText text={timeValue} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
       </View>
-      <Slider minimumValue={minValue} maximumValue={maxValue} onValueChange={onValueChange} step={step} />
+      <Slider thumbTintColor={ColorsEnum.GREEN} minimumTrackTintColor={ColorsEnum.GREEN} minimumValue={minValue} maximumValue={maxValue} onValueChange={onValueChange} step={step} />
     </View>
   );
 };
