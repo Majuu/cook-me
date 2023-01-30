@@ -12,6 +12,9 @@ interface AddNewIngredientProps {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        paddingBottom: 20
+    },
     innerDistance: {
         marginBottom: 10
     },
@@ -41,7 +44,7 @@ const AddNewIngredient: FunctionComponent<AddNewIngredientProps> = ({onAddNewIng
     //TODO form reset after adding an ingredient
 
     return (
-        <View>
+        <View style={styles.container}>
             <Formik
                 initialValues={newIngredientInitialValues}
                 onSubmit={(values) => onAddNewIngredient(values)}
@@ -60,7 +63,7 @@ const AddNewIngredient: FunctionComponent<AddNewIngredientProps> = ({onAddNewIng
                     <CustomPicker style={styles.unitPicker} list={ingredientUnits} placeholder={'Unit'} onChange={handleChange('unit')}></CustomPicker>
                 </View>
                 <View style={styles.singleLineInputsContainer}>
-                    <CustomButton text={ isPredefinedListVisible ? 'Custom' : 'Predefined'} onPress={() => {setIsPredefinedListVisible(!isPredefinedListVisible); setFieldValue('name', '')}} />
+                    <CustomButton text={ isPredefinedListVisible ? 'Custom' : 'List'} onPress={() => {setIsPredefinedListVisible(!isPredefinedListVisible); setFieldValue('name', '')}} />
                     <CustomButton text="Add" onPress={handleSubmit} />
                 </View>
                 </>

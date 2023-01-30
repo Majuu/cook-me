@@ -1,4 +1,4 @@
-export interface RecipeIngredient {
+export interface Ingredient {
   name: string;
   amount: number;
   unit: string;
@@ -11,7 +11,7 @@ export interface RecipeListItem {
   isFavourite: boolean;
   description: string;
   authors: string;
-  ingredients: RecipeIngredient[];
+  ingredients: Ingredient[];
   id?: number;
   // image: string; //check?
 }

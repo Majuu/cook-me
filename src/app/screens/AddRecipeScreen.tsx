@@ -19,6 +19,7 @@ import CustomStepIndicator from '../components/shared/CustomStepIndicator';
 import { RecipeCategories } from '../enums/recipe-categories.enum';
 import AddNewIngredient from '../components/AddNewIngredient';
 import { FlatList } from 'react-native-gesture-handler';
+import NewIngredientListItem from '../components/NewIngredientListItem';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -44,6 +45,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     width: '100%'
+  },
+  newIngredientContainer: {
+    height: '90%'
   }
 });
 
@@ -154,19 +158,17 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                   </>
                 )}
                 {currentPosition == 1 && (
-                  <>
+                  <View style={styles.newIngredientContainer}>
                   <AddNewIngredient onAddNewIngredient={(newIngredient: any) => {console.log(newIngredient); setFieldValue('ingredients', [...values.ingredients, newIngredient])}} />
-                    {/* TODO  ADD FLATLIST HERE FOR SCROLLING */}
-                    {values.ingredients.map((ingredient, index) => 
-                      <CustomText 
-                        fontFamily={FontsEnum.SEN_REGULAR} 
-                        color={ColorsEnum.GREEN} 
-                        fontSize={20} 
-                        text={`${index + 1}. ${ingredient.amount} ${ingredient.unit} ${ingredient.name}`} />
-                    )}
-
-                  
-                  </>
+                     <FlatList
+                        data={values.ingredients}
+                        scrollEnabled={true}
+                        renderItem={({item, index}): React.ReactElement => (
+                         <NewIngredientListItem index={index} ingredient={item} />
+                        )}
+                        keyExtractor={(item, index): string => (index+item.amount+item.name+item.unit)}
+                      />
+                      </View>
                 )}
                 {currentPosition == 2 && (
                   <>
