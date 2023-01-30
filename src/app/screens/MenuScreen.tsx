@@ -1,5 +1,5 @@
 import React, {FunctionComponent} from 'react';
-import {FlatList, Route, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Route, StyleSheet, View} from 'react-native';
 import {textPlaceholders} from '../consts/text-placeholders.const';
 import Learn from '../../../assets/images/mold.svg';
 import Menu from '../../../assets/images/menu.svg';
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
 const MenuScreen: FunctionComponent<MenuScreenProps> = ({
   navigation,
 }: MenuScreenProps): React.ReactElement => {
-  const imgDimensions = '100%';
   const data: MenuItemListInterface[] = [
     // {
     //   id: 'learn',
