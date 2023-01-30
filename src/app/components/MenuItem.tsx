@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 const MenuItem: FunctionComponent<MenuItemProps> = ({ navigation, title, image, screenToNavigate }: MenuItemProps): React.ReactElement => {
-  const textFontSize = 30;
+  const textFontSize = 35;
 
   const navigateToScreen = useCallback(() => {
     navigation.navigate(screenToNavigate, { isMyRecipes: screenToNavigate === ScreensEnum.MY_RECIPES });

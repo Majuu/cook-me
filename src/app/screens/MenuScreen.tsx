@@ -1,10 +1,10 @@
 import React, {FunctionComponent} from 'react';
 import {FlatList, Route, StyleSheet, Text, View} from 'react-native';
 import {textPlaceholders} from '../consts/text-placeholders.const';
-// import Learn from '../../../assets/images/mold.svg';
-// import Menu from '../../../assets/images/menu.svg';
-// import Chef from '../../../assets/images/chef.svg';
-// import Cooking from '../../../assets/images/cooking.svg';
+import Learn from '../../../assets/images/mold.svg';
+import Menu from '../../../assets/images/menu.svg';
+import Chef from '../../../assets/images/chef.svg';
+import Cooking from '../../../assets/images/cooking.svg';
 import {ScreensEnum} from '../enums/screens.enum';
 import MenuItem from '../components/MenuItem';
 import {ColorsEnum} from '../enums/colors.enum';
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 const MenuScreen: FunctionComponent<MenuScreenProps> = ({
   navigation,
 }: MenuScreenProps): React.ReactElement => {
-  // const imgDimensions = 80;
+  const imgDimensions = '100%';
   const data: MenuItemListInterface[] = [
     // {
     //   id: 'learn',
@@ -39,40 +39,22 @@ const MenuScreen: FunctionComponent<MenuScreenProps> = ({
     //   image: <Learn width={imgDimensions} height={imgDimensions} />,
     //   screenToNavigate: ScreensEnum.LEARN_BASICS
     // },
-    // {
-    //   id: 'myList',
-    //   title: textPlaceholders.menuScreen.myList,
-    //   image: <Chef width={imgDimensions} height={imgDimensions} />,
-    //   screenToNavigate: ScreensEnum.MY_RECIPES
-    // },
-    // {
-    //   id: 'list',
-    //   title: textPlaceholders.menuScreen.list,
-    //   image: <Menu width={imgDimensions} height={imgDimensions} />,
-    //   screenToNavigate: ScreensEnum.RECIPE_LIST
-    // },
-    // {
-    //   id: 'add',
-    //   title: textPlaceholders.menuScreen.addRecipe,
-    //   image: <Cooking width={imgDimensions} height={imgDimensions} />,
-    //   screenToNavigate: ScreensEnum.ADD_RECIPE
-    // }
     {
       id: 'list',
       title: textPlaceholders.menuScreen.list,
-      image: <Text>image</Text>,
+      image: <Menu width={'20%'} height={'150%'} />,
       screenToNavigate: ScreensEnum.RECIPE_LIST,
     },
     {
       id: 'myList',
       title: textPlaceholders.menuScreen.myList,
-      image: <Text>image</Text>,
+      image: <Chef width={'20%'} height={'150%'} />,
       screenToNavigate: ScreensEnum.MY_RECIPES,
     },
     {
       id: 'add',
       title: textPlaceholders.menuScreen.addRecipe,
-      image: <Text>image</Text>,
+      image: <Cooking width={'20%'} height={'150%'} />,
       screenToNavigate: ScreensEnum.ADD_RECIPE,
     }
   ];
