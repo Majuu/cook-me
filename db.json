@@ -28,7 +28,7 @@
       "title": "Biscuits",
       "category": "cookies",
       "time": "00:30:00",
-      "isFavourite": false,
+      "isFavourite": true,
       "ingredients": [
         {
           "name": "flour",
@@ -74,7 +74,7 @@
       "title": "Apple Pie",
       "category": "cakes",
       "time": "00:30:00",
-      "isFavourite": false,
+      "isFavourite": true,
       "ingredients": [
         {
           "name": "flour",

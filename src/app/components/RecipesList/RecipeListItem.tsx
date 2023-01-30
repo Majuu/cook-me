@@ -3,14 +3,14 @@
 // import CustomText from '../shared/CustomText';
 // import {ColorsEnum} from '../../enums/colors.enum';
 // import {FontsEnum} from '../../enums/fonts.enum';
-// import Timer from '../../../../assets/images/app-interaction-icons/clock.svg';
-// import InactiveStar from '../../../../assets/images/app-interaction-icons/star-empty.svg';
-// import ActiveStar from '../../../../assets/images/app-interaction-icons/star-active.svg';
+import Timer from '../../../../assets/images/app-interaction-icons/clock.svg';
+import InactiveStar from '../../../../assets/images/app-interaction-icons/star-empty.svg';
+import ActiveStar from '../../../../assets/images/app-interaction-icons/star-active.svg';
 // import {RecipeListItem} from '../../interfaces/recipe.interface';
-// import {editRecipe} from '../../services/dataApi';
+import {editRecipe} from '../../services/dataApi';
 
-import React, { FunctionComponent } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { FunctionComponent, useCallback } from "react";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ColorsEnum } from "../../enums/colors.enum";
 import { FontsEnum } from "../../enums/fonts.enum";
 import { RecipeListItem } from "../../interfaces/recipe.interface";
@@ -73,11 +73,11 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
   const timeSize: number = 15;
   const {title, category, time, isFavourite, id} = item;
 
-  // const changeIsFavourites = useCallback(async () => {
-  //   await editRecipe({ ...item, isFavourite: !isFavourite }, id as number);
-  //   setFavouriteRecipes();
-  //   setAllRecipes();
-  // }, [item, isFavourite, id]);
+  const changeIsFavourites = useCallback(async () => {
+    await editRecipe({ ...item, isFavourite: !isFavourite }, id as number);
+    setFavouriteRecipes();
+    setAllRecipes();
+  }, [item, isFavourite, id]);
 
   return (
     <React.Fragment>
@@ -86,15 +86,7 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
         activeOpacity={0.7}
         onPress={onPress}>
         <View style={styles.leftMenuWrapper}>
-          {/* <Image source={require('../../../../assets/images/muffin.jpg')} style={styles.icon}> */}
-          {/*//ToDo linear gradient*/}
-          {/*<LinearGradient*/}
-          {/*  ref={r => (gradiant = r)}*/}
-          {/*  locations={[0, 1.0]}*/}
-          {/*  colors={['rgba(0,0,0,0.00)', 'rgba(0,0,0,0.80)']}*/}
-          {/*  style={styles.linearGradient}*/}
-          {/*/>*/}
-          {/* </Image> */}
+          <Image source={require('../../../../assets/images/muffin.jpg')} style={styles.icon}/>
           <View style={styles.descriptionWrapper}>
             <CustomText
               color={ColorsEnum.DARK_GREEN}
@@ -109,7 +101,7 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
               text={category}
             />
             <View style={styles.timeWrapper}>
-              {/* <Timer height={timeSize} width={timeSize} style={styles.clock} /> */}
+              <Timer height={timeSize} width={timeSize} style={styles.clock} />
               <CustomText
                 text={time}
                 fontSize={timeSize}
@@ -119,8 +111,8 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
             </View>
           </View>
         </View>
-        {/* {!isFavourite && <InactiveStar height={30} width={30} onPress={changeIsFavourites} />} */}
-        {/* {isFavourite && <ActiveStar height={30} width={30} onPress={changeIsFavourites} />} */}
+        {!isFavourite && <InactiveStar height={30} width={30} onPress={changeIsFavourites} />}
+        {isFavourite && <ActiveStar height={30} width={30} onPress={changeIsFavourites} />}
       </TouchableOpacity>
     </React.Fragment>
   );
