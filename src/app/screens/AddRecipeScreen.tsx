@@ -8,7 +8,7 @@ import CustomPicker from '../components/shared/CustomPicker';
 import CustomButton from '../components/shared/CustomButton';
 import CustomCheckBox from '../components/shared/CustomCheckBox';
 import { Formik } from 'formik';
-import { RecipeListItem } from '../interfaces/recipe.interface';
+import { Ingredient, RecipeListItem } from '../interfaces/recipe.interface';
 import { addRecipe } from '../services/dataApi';
 import { ScreensEnum } from '../enums/screens.enum';
 import { useNavigation } from '@react-navigation/native';
@@ -118,6 +118,11 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
 
   const recipeCategories: RecipeCategories[] = [RecipeCategories.BREAKFAST, RecipeCategories.DINNER, RecipeCategories.DESSERT];
 
+  const removeIgredientFromTheList = (ingredientList: Ingredient[], index: number, deleteFn: Function): void => {
+    ingredientList.splice(index, 1);
+    deleteFn('ingredients', ingredientList);
+  }
+
   //ToDo add stepper & divide to sections
   return (
     <View style={styles.wrapper}>
@@ -159,14 +164,14 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                 )}
                 {currentPosition == 1 && (
                   <View style={styles.newIngredientContainer}>
-                  <AddNewIngredient onAddNewIngredient={(newIngredient: any) => {console.log(newIngredient); setFieldValue('ingredients', [...values.ingredients, newIngredient])}} />
+                  <AddNewIngredient onAddNewIngredient={(newIngredient: Ingredient) => {setFieldValue('ingredients', [...values.ingredients, newIngredient])}} />
                      <FlatList
                         data={values.ingredients}
                         scrollEnabled={true}
                         renderItem={({item, index}): React.ReactElement => (
-                         <NewIngredientListItem index={index} ingredient={item} />
+                         <NewIngredientListItem ingredient={item} onDelete={() => removeIgredientFromTheList(values.ingredients, index, setFieldValue)} />
                         )}
-                        keyExtractor={(item, index): string => (index+item.amount+item.name+item.unit)}
+                        keyExtractor={(item, index): string => (index+item?.amount+item?.name+item.unit)}
                       />
                       </View>
                 )}

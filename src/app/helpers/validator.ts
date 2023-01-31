@@ -16,3 +16,12 @@ export const AddRecipeValidationSchema = Yup.object().shape({
     .max(100),
   ingredients: Yup.array()
 });
+
+export const AddIngredientValidationSchema = Yup.object().shape({
+  name: Yup.string()
+    .required(),
+  amount: Yup.string()
+  .required(),
+  unit: Yup.string()
+  .required()
+})

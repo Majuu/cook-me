@@ -6,6 +6,7 @@ interface ButtonPropsInterface {
   text: string;
   onPress: () => void;
   style?: HTMLStyleElement;
+  disabled?: boolean;
 }
 
 const styles = StyleSheet.create({
@@ -20,14 +21,18 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
+  disabled: {
+    opacity: 0.4
+  }
 });
 
 const CustomButton: FunctionComponent<ButtonPropsInterface> = ({
   text,
   onPress,
   style,
+  disabled
 }: ButtonPropsInterface): React.ReactElement => (
-  <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
+  <TouchableOpacity style={[styles.container, style, disabled && styles.disabled]} onPress={onPress} disabled={disabled}>
     <View>
       <Text
         style={{

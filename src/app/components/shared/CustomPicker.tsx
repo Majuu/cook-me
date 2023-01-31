@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useRef } from 'react';
 import { StyleSheet } from 'react-native';
 import { ColorsEnum } from '../../enums/colors.enum';
 import SelectDropdown from 'react-native-select-dropdown';
@@ -7,6 +7,7 @@ import { FontsEnum } from '../../enums/fonts.enum';
 interface CustomPickerProps {
   list: Array<any>;
   onChange: Function;
+  reference?: any;
   placeholder?: string;
   style?: HTMLStyleElement;
 }
@@ -37,7 +38,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const CustomPicker: FunctionComponent<CustomPickerProps> = ({ list, onChange, style, placeholder }): React.ReactElement => {
+const CustomPicker: FunctionComponent<CustomPickerProps> = ({ list, onChange, style, placeholder, reference }): React.ReactElement => {
+
   return (
       <SelectDropdown
         onChangeSearchInputText={() => {}}
@@ -52,6 +54,7 @@ const CustomPicker: FunctionComponent<CustomPickerProps> = ({ list, onChange, st
         }}
         dropdownOverlayColor={'none'}
         buttonStyle={{...styles.buttonContainer, ...style}}
+        ref={reference}
         />
   );
 };

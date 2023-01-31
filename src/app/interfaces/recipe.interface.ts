@@ -1,7 +1,9 @@
+import { IngredientUnit } from "../enums/ingredient-units.enum";
+
 export interface Ingredient {
   name: string;
   amount: number;
-  unit: string;
+  unit: IngredientUnit;
 }
 
 export interface RecipeListItem {
