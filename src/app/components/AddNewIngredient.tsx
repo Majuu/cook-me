@@ -1,5 +1,5 @@
-import { Formik, FormikErrors, FormikState } from "formik";
-import { FunctionComponent, ReactElement, useRef, useState } from "react";
+import { Formik, FormikConfig, FormikErrors, FormikProps, FormikState } from "formik";
+import { FunctionComponent, ReactElement, useEffect, useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import { ingredientUnits } from "../consts/ingredient-units.const";
@@ -16,9 +16,9 @@ interface AddNewIngredientProps {
 }
 
 interface SubmitFormArgs {
-    values: Ingredient;
-    resetForm: (nextState?: Partial<FormikState<Ingredient>>) => void;
-    validateForm: (values?: Ingredient) => Promise<FormikErrors<Ingredient>>;
+    values: any;
+    resetForm: (nextState?: Partial<FormikState<any>>) => void;
+    validateForm: (values?: any) => Promise<FormikErrors<any>>;
 }
 
 const styles = StyleSheet.create({
@@ -46,10 +46,10 @@ const AddNewIngredient: FunctionComponent<AddNewIngredientProps> = ({onAddNewIng
     const ingredientPickerRef = useRef<SelectDropdown>(null);
     const unitPickerRef = useRef<SelectDropdown>(null);
 
-    const newIngredientInitialValues: Ingredient = {
+    const newIngredientInitialValues = {
         name: '',
-        amount: 0,
-        unit: IngredientUnit.NO_UNIT
+        amount: '',
+        unit: ''
     }
 
     const submitForm = ({resetForm, validateForm, values}: SubmitFormArgs): void => {
@@ -71,6 +71,7 @@ const AddNewIngredient: FunctionComponent<AddNewIngredientProps> = ({onAddNewIng
                 initialValues={newIngredientInitialValues}
                 onSubmit={(values, {resetForm, validateForm}) => submitForm({values, resetForm, validateForm}) }
                 validationSchema={AddIngredientValidationSchema}
+                validateOnMount={true}
             >
             {({ handleSubmit, handleChange, values, setFieldValue, isValid }) => (
                 <>

@@ -20,6 +20,8 @@ import { RecipeCategories } from '../enums/recipe-categories.enum';
 import AddNewIngredient from '../components/AddNewIngredient';
 import { FlatList } from 'react-native-gesture-handler';
 import NewIngredientListItem from '../components/NewIngredientListItem';
+import AddNewRecipeDescriptionStep from '../components/AddNewRecipeDescriptionStep';
+import NewDescriptionStepListItem from '../components/NewDescriptionStepListItem';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -55,7 +57,7 @@ const initialFormValues: RecipeListItem = {
   title: '',
   category: '',
   time: '',
-  description: '',
+  description: [],
   authors: '',
   isFavourite: false,
   ingredients: []
@@ -118,9 +120,9 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
 
   const recipeCategories: RecipeCategories[] = [RecipeCategories.BREAKFAST, RecipeCategories.DINNER, RecipeCategories.DESSERT];
 
-  const removeIgredientFromTheList = (ingredientList: Ingredient[], index: number, deleteFn: Function): void => {
-    ingredientList.splice(index, 1);
-    deleteFn('ingredients', ingredientList);
+  const removeItemFromTheList = (itemsList: Array<any>, index: number, deleteFn: Function, fieldName: string): void => {
+    itemsList.splice(index, 1);
+    deleteFn(fieldName, itemsList);
   }
 
   //ToDo add stepper & divide to sections
@@ -164,26 +166,39 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                 )}
                 {currentPosition == 1 && (
                   <View style={styles.newIngredientContainer}>
-                  <AddNewIngredient onAddNewIngredient={(newIngredient: Ingredient) => {setFieldValue('ingredients', [...values.ingredients, newIngredient])}} />
-                     <FlatList
-                        data={values.ingredients}
-                        scrollEnabled={true}
-                        renderItem={({item, index}): React.ReactElement => (
-                         <NewIngredientListItem ingredient={item} onDelete={() => removeIgredientFromTheList(values.ingredients, index, setFieldValue)} />
-                        )}
-                        keyExtractor={(item, index): string => (index+item?.amount+item?.name+item.unit)}
-                      />
-                      </View>
+                    <AddNewIngredient onAddNewIngredient={(newIngredient: Ingredient) => {setFieldValue('ingredients', [...values.ingredients, newIngredient])}} />
+                    <FlatList
+                      data={values.ingredients}
+                      scrollEnabled={true}
+                      renderItem={({item, index}): React.ReactElement => (
+                        <NewIngredientListItem ingredient={item} onDelete={() => removeItemFromTheList(values.ingredients, index, setFieldValue, 'ingredients')} />
+                      )}
+                      keyExtractor={(item, index): string => (index+item?.amount+item?.name+item.unit)}
+                      ListEmptyComponent={<CustomText fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} fontSize={15} text='There are no ingredients yet' />}
+                    />
+                  </View>
                 )}
                 {currentPosition == 2 && (
                   <>
-                    <CustomInput
+                    <View style={styles.newIngredientContainer}>
+                      <AddNewRecipeDescriptionStep onAddDescriptionStep={(newDescriptionStep: any) => {setFieldValue('description', [...values.description, newDescriptionStep])}} />
+                      <FlatList
+                        data={values.description}
+                        scrollEnabled={true}
+                        renderItem={({item, index}): React.ReactElement => (
+                          <NewDescriptionStepListItem index={index} descriptionStep={item} onEdit={() => {console.log('1234')}} onDelete={() => removeItemFromTheList(values.description, index, setFieldValue, 'description')} />
+                        )}
+                        keyExtractor={(item, index): string => (index.toString())}
+                        ListEmptyComponent={<CustomText fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} fontSize={15} text='There are no instructions yet.' />}
+                      />
+                    </View>
+                    {/* <CustomInput
                       placeholder={'Description'}
                       style={styles.inputsDistance}
                       onChange={handleChange('description')}
                       value={values.description}
                       multiline
-                    />
+                    /> */}
                   </>
                 )}
               </View>

@@ -8,6 +8,7 @@ interface CustomTextPropsInterface {
   fontSize: any;
   fontFamily: FontsEnum;
   color: ColorsEnum;
+  numberOfLines?: number;
   style?: HTMLStyleElement;
 }
 
@@ -22,6 +23,7 @@ const CustomText: FunctionComponent<CustomTextPropsInterface> = ({
   color,
   fontFamily,
   fontSize,
+  numberOfLines,
   style
 }: CustomTextPropsInterface): React.ReactElement => {
   const propsStyles = StyleSheet.create({
@@ -33,7 +35,7 @@ const CustomText: FunctionComponent<CustomTextPropsInterface> = ({
   });
   return (
     <View style={style}>
-      <Text style={[propsStyles.textStyling, styles.textStyles]}>{text}</Text>
+      <Text numberOfLines={numberOfLines} style={[propsStyles.textStyling, styles.textStyles]}>{text}</Text>
     </View>
   );
 };

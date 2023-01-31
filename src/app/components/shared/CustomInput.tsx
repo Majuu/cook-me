@@ -2,7 +2,7 @@ import {StyleSheet, TextInput, View} from 'react-native';
 import React, {ChangeEvent, FunctionComponent, useMemo} from 'react';
 import {ColorsEnum} from '../../enums/colors.enum';
 import {FontsEnum} from '../../enums/fonts.enum';
-// import SearchIcon from '../../../../assets/images/search.svg';
+import SearchIcon from '../../../../assets/images/search.svg';
 
 interface CustomInputProps {
   placeholder: string;
@@ -14,6 +14,7 @@ interface CustomInputProps {
   isSearchBar?: boolean;
   numberedInput?: boolean;
   style?: HTMLStyleElement;
+  deepInputStyles?: HTMLStyleElement;
 }
 
 const styles = StyleSheet.create({
@@ -64,6 +65,7 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
   isSearchBar = false,
   numberedInput = false,
   style,
+  deepInputStyles
 }): React.ReactElement => {
   const containerStyles = useMemo(() => {
     if (isSearchBar) {
@@ -86,14 +88,14 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
 
   return (
     <View style={containerStyles}>
-      {/* {isSearchBar && (
+      {isSearchBar && (
         <SearchIcon width={19} height={19} style={styles.searchIcon} />
-      )} */}
+      )}
       <TextInput
         multiline={multiline}
         numberOfLines={multiline ? 10 : 1}
         placeholder={placeholder}
-        style={inputStyles}
+        style={[inputStyles, deepInputStyles]}
         onChangeText={onChange}
         value={value}
         autoFocus={autoFocus}

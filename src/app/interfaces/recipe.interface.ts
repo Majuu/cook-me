@@ -11,7 +11,7 @@ export interface RecipeListItem {
   category: string;
   time: string;
   isFavourite: boolean;
-  description: string;
+  description: any; // Array of steps
   authors: string;
   ingredients: Ingredient[];
   id?: number;
