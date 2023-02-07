@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     buttonGap: {
-        marginTop: 10
+        marginTop: 15
     }
   });
 
@@ -30,7 +30,7 @@ const AddNewRecipeDescriptionStep: FunctionComponent<AddNewRecipeDescriptionStep
 
     return (<View style={styles.container}>
             <CustomInput value={descriptionValue} onChange={setDescriptionValue} placeholder={'Describe the recipe step'} autoFocus multiline style={styles.input} deepInputStyles={styles.input} />
-            <CustomButton onPress={addDescriptioinStep} text={'Add'} style={styles.buttonGap} />
+            <CustomButton disabled={!descriptionValue.length} onPress={addDescriptioinStep} text={'Add'} style={styles.buttonGap} />
     </View>);
 }
 

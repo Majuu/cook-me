@@ -136,6 +136,7 @@ import LearnBasicsScreen from './src/app/screens/BasicsScreen';
 import {ScreensEnum} from './src/app/enums/screens.enum';
 import AddRecipeScreen from './src/app/screens/AddRecipeScreen';
 import FullScreenContainer from './src/app/components/FullScreenContainer';
+import RecipeDeailsScreen from './src/app/screens/RecipeDetailsScreen';
 
 interface StackedScreensInterface {
   name: ScreensEnum;
@@ -152,6 +153,7 @@ class App extends Component {
     {name: ScreensEnum.MY_RECIPES, component: RecipeListScreen},
     {name: ScreensEnum.LEARN_BASICS, component: LearnBasicsScreen},
     {name: ScreensEnum.ADD_RECIPE, component: AddRecipeScreen},
+    {name: ScreensEnum.RECIPE_DETAILS, component: RecipeDeailsScreen},
   ];
 
   public render(): ReactNode {
@@ -167,8 +169,8 @@ class App extends Component {
                   name={item.name}
                   component={item.component}
                 />
-                ),
-                )}
+              )
+            )}
           </Stack.Navigator>
                 </FullScreenContainer>
         </NavigationContainer>

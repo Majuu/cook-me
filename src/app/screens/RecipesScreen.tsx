@@ -23,7 +23,8 @@ import RecipeListNavbar from '../components/RecipesList/RecipeListNavbar';
 import CustomModal from '../components/shared/CustomModal';
 import {getAllRecipes, getFavouritesRecipes} from '../services/dataApi';
 import {recipeActions} from '../store/actions/recipe.actions';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import { ScreensEnum } from '../enums/screens.enum';
 
 interface AllRecipesScreenProps {
   modal: boolean;
@@ -53,6 +54,8 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
   const [searchItem, setSearchItem] = useState<string>('');
   const [searchCategory, setSearchCategory] = useState<string>('all');
   const route: Route = useRoute();
+  const navigation: Route = useNavigation();
+
   //ToDo check typing
   // @ts-ignore
   const isFavouriteRecipesScreen: boolean =
@@ -137,6 +140,11 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
     openModal();
   };
 
+  const navigateToRecipeDetails = useCallback((item: any) => {
+    console.log(item)
+    navigation.navigate(ScreensEnum.RECIPE_DETAILS, {});
+  }, []);
+
   return (
     <View style={styles.container}>
       <RecipeListNavbar
@@ -154,14 +162,14 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
           <RecipesListItem
             item={recipe.item}
             key={recipe.item.title}
-            onPress={(): void => handleModalOpen(recipe.item)}
+            onPress={() => navigateToRecipeDetails(recipe.item)}
             setAllRecipes={setAllRecipes}
             setFavouriteRecipes={setFavouriteRecipes}
           />
         )}
         keyExtractor={(item: RecipeListItem): string => item.title}
       />
-      {itemInModal && <CustomModal item={itemInModal} />}
+      {/* {itemInModal && <CustomModal item={itemInModal} />} */}
     </View>
   );
 };

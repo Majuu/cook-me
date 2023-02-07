@@ -80,15 +80,14 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
 
   //ToDo add error handling
   const addNewRecipe = async (recipeItems: RecipeListItem): Promise<void> => {
-    console.log(recipeItems)
-    // try {
-    //   await AddRecipeValidationSchema.validate(recipeItems);
-    //   await addRecipe(recipeItems);
-    //   navigation.navigate(ScreensEnum.MENU);
-    // } catch (e) {
-    //   //ToDo fireup the error message
-    //   console.log(e);
-    // }
+    try {
+      // await AddRecipeValidationSchema.validate(recipeItems);
+      await addRecipe(recipeItems);
+      navigation.navigate(ScreensEnum.MENU);
+    } catch (e) {
+      //ToDo fireup the error message
+      console.log(e);
+    }
   };
 
   const setTimeValue = useCallback(async (timeValue: any) => {
@@ -125,7 +124,6 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
     deleteFn(fieldName, itemsList);
   }
 
-  //ToDo add stepper & divide to sections
   return (
     <View style={styles.wrapper}>
         {/* <KeyboardAvoidingView behavior={'position'} style={styles.container}> */}
@@ -135,8 +133,11 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
         <Formik
           initialValues={initialFormValues}
           onSubmit={(values) => addNewRecipe({ ...values, isFavourite: isAddedToFavourites, category, time })}
+          validateOnMount={true}
+          validationSchema={AddRecipeValidationSchema}
+
         >
-          {({ handleSubmit, handleChange, values, setFieldValue }) => (
+          {({ handleSubmit, handleChange, values, setFieldValue, isValid }) => (
             <View style={styles.formWithButtonsContainer}>
               <View>
                 {currentPosition === 0 && (
@@ -186,26 +187,19 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
                         data={values.description}
                         scrollEnabled={true}
                         renderItem={({item, index}): React.ReactElement => (
-                          <NewDescriptionStepListItem index={index} descriptionStep={item} onEdit={() => {console.log('1234')}} onDelete={() => removeItemFromTheList(values.description, index, setFieldValue, 'description')} />
+                          <NewDescriptionStepListItem index={index} descriptionStep={item} onDelete={() => removeItemFromTheList(values.description, index, setFieldValue, 'description')} />
                         )}
                         keyExtractor={(item, index): string => (index.toString())}
                         ListEmptyComponent={<CustomText fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} fontSize={15} text='There are no instructions yet.' />}
                       />
                     </View>
-                    {/* <CustomInput
-                      placeholder={'Description'}
-                      style={styles.inputsDistance}
-                      onChange={handleChange('description')}
-                      value={values.description}
-                      multiline
-                    /> */}
                   </>
                 )}
               </View>
               <View style={styles.navigationButtons}>
                 {buttonBack}
                 {buttonForward}
-                {currentPosition === 2 && <CustomButton text={'Submit'} onPress={handleSubmit} />}
+                {currentPosition === 2 && <CustomButton disabled={!isValid} text={'Submit'} onPress={handleSubmit} />}
               </View>
             </View>
           )}

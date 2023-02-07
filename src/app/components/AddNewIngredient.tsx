@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20
     },
     innerDistance: {
-        marginBottom: 10
+        marginBottom: 15
     },
     singleLineInputsContainer: {
         display: 'flex',

@@ -51,7 +51,7 @@
       "title": "Cookies",
       "category": "cookies",
       "time": "00:30:00",
-      "isFavourite": true,
+      "isFavourite": false,
       "ingredients": [
         {
           "name": "flour",
@@ -97,7 +97,7 @@
       "title": "Cheesecake",
       "category": "cakes",
       "time": "00:30:00",
-      "isFavourite": true,
+      "isFavourite": false,
       "ingredients": [
         {
           "name": "flour",
@@ -137,6 +137,25 @@
       ],
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "authors": "Maju the MasterChef"
+    },
+    {
+      "title": "Sd",
+      "category": "Dinner",
+      "time": "02:00:00",
+      "description": [
+        "Sds",
+        "Kjdhgfkjhdf"
+      ],
+      "authors": "Ds",
+      "isFavourite": true,
+      "ingredients": [
+        {
+          "name": "Eggs",
+          "amount": "ds",
+          "unit": "l"
+        }
+      ],
+      "id": 7
     }
   ]
 }

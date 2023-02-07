@@ -4,5 +4,6 @@ export enum ScreensEnum {
   RECIPE_LIST = 'RecipeList',
   MY_RECIPES = 'MyRecipeList',
   LEARN_BASICS = 'LearnBasics',
-  ADD_RECIPE = 'AddRecipe'
+  ADD_RECIPE = 'AddRecipe',
+  RECIPE_DETAILS = 'RecipeDetails'
 }
