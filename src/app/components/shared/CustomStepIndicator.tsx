@@ -6,7 +6,6 @@ import { StyleSheet, View, Text } from 'react-native';
 import { StepIndicatorStyles } from 'react-native-step-indicator/lib/typescript/src/types';
 
 interface CustomStepIndicatorProps {
-  stepCount: number;
   labels: string[];
   currentPosition: number;
   style?: HTMLStyleElement;
@@ -72,7 +71,6 @@ const renderLabel = ({
 const CustomStepIndicator: FunctionComponent<CustomStepIndicatorProps> = ({
   currentPosition,
   labels,
-  stepCount,
   style
 }): React.ReactElement => {
   return (
@@ -81,7 +79,7 @@ const CustomStepIndicator: FunctionComponent<CustomStepIndicatorProps> = ({
         labels={labels}
         direction={'horizontal'}
         currentPosition={currentPosition}
-        stepCount={stepCount}
+        stepCount={labels.length}
         customStyles={stepIndicatorConfig}
         renderLabel={renderLabel}
       />

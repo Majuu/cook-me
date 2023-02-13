@@ -6,12 +6,12 @@ export interface Ingredient {
   unit: IngredientUnit;
 }
 
-export interface RecipeListItem {
+export interface Recipe {
   title: string;
   category: string;
   time: string;
   isFavourite: boolean;
-  description: any; // Array of steps
+  description: Array<string>;
   authors: string;
   ingredients: Ingredient[];
   id?: number;

@@ -1,97 +1,76 @@
-import { FunctionComponent, useState } from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
-import StepIndicator from "react-native-step-indicator/lib/typescript/src/types";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { FunctionComponent, useMemo, useState, useCallback } from "react";
+import { View, StyleSheet } from "react-native";
 import RecipeContent from "../components/RecipeContent";
-import CustomText from "../components/shared/CustomText";
 import { ColorsEnum } from "../enums/colors.enum";
-import { FontsEnum } from "../enums/fonts.enum";
+import { Recipe } from "../interfaces/recipe.interface";
+import CustomStepIndicator from '../components/shared/CustomStepIndicator';
+import CustomButton from "../components/shared/CustomButton";
 
 const styles = StyleSheet.create({
     container: {
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      left: 0,
-      bottom: 0,
-      backgroundColor: ColorsEnum.LIGHT_GREEN
-    },
-    header: {
-      marginTop: 15,
-      marginBottom: 20
+      height: '100%',
+      padding: 25
     },
     topContainerWrapper: {
-      marginTop: 50,
-      paddingBottom: 15,
-      borderBottomWidth: 4,
+      paddingTop: 30,
       borderStyle: 'solid',
-      borderColor: ColorsEnum.GREEN
+      borderColor: ColorsEnum.GREEN,
+      borderBottomWidth: 1
     },
-    closeButton: {
-      position: 'absolute',
-      top: 20,
-      right: 20
-    },
-    stepIndicator: {
-      width: 'auto',
-      borderRightWidth: 1,
-      borderStyle: 'solid',
-      borderColor: ColorsEnum.DARK_GREEN,
-      paddingRight: 3,
-      marginLeft: 6
-    },
-    recipeContent: {
-      flex: 1
+    stepButtonsContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     }
 });
 
 const RecipeDeailsScreen: FunctionComponent = () => {
-    const [currentPosition, setCurrentPosition] = useState<number>(1);
-    const labels = ['Checklist', 'Cook!', 'To sum up', 'Authors'];
+    const route = useRoute<RouteProp<{params: {recipe: Recipe}}>>();  
+    const recipe = route.params.recipe;
+    const [currentPosition, setCurrentPosition] = useState<number>(0);
+    const labels = useMemo(() => ['Overview', 'Ingredients', 'Cook!'], []);
+    const navigation = useNavigation();
 
-    const item = {title: 'Title'}
+    const moveIndicatorStep = useCallback((isStepForward: boolean) => {
+        setCurrentPosition(currentPosition + (isStepForward ? 1 : -1));
+      },[currentPosition]);
+
+    const buttonForward = useMemo(() => {
+      if (currentPosition !== labels.length - 1) {
+        return <CustomButton text={'Next'} onPress={() => moveIndicatorStep(true)} />;
+      }
+    }, [currentPosition]);
+  
+    const buttonBack = useMemo(() => {
+      if (currentPosition !== 0) {
+        return <CustomButton text={'Back'} onPress={() => moveIndicatorStep(false)} />;
+      } else {
+        return <View />;
+      }
+    }, [currentPosition]);
+
+    const buttonComplete = useMemo(() => {
+      if (currentPosition === labels.length - 1) {
+        return <CustomButton text={'Complete'} onPress={() => navigation.goBack()} />;
+      } else {
+        return <></>;
+      }
+    }, [currentPosition, navigation]);
 
     return (
-        <>
+      <>
         <View style={styles.container}>
-        <View style={styles.topContainerWrapper}>
-          {/* <StepIndicator
-            labels={labels}
-            direction={'horizontal'}
-            currentPosition={currentPosition}
-            stepCount={4}
-            customStyles={{
-              stepIndicatorSize: 40,
-              currentStepIndicatorSize: 40,
-              separatorStrokeWidth: 4,
-              currentStepStrokeWidth: 4,
-              stepStrokeCurrentColor: ColorsEnum.GREEN,
-              stepStrokeWidth: 4,
-              stepStrokeFinishedColor: ColorsEnum.GREEN,
-              stepStrokeUnFinishedColor: ColorsEnum.GRAY,
-              separatorFinishedColor: ColorsEnum.GREEN,
-              separatorUnFinishedColor: ColorsEnum.GRAY,
-              stepIndicatorFinishedColor: ColorsEnum.GREEN,
-              stepIndicatorUnFinishedColor: ColorsEnum.WHITE,
-              stepIndicatorCurrentColor: ColorsEnum.WHITE,
-              stepIndicatorLabelFontSize: 22,
-              currentStepIndicatorLabelFontSize: 22,
-              stepIndicatorLabelCurrentColor: ColorsEnum.GREEN,
-              stepIndicatorLabelFinishedColor: ColorsEnum.WHITE,
-              stepIndicatorLabelUnFinishedColor: ColorsEnum.GRAY,
-              labelColor: '#999999',
-              labelSize: 15,
-              currentStepLabelColor: ColorsEnum.DARK_GREEN,
-              labelAlign: 'flex-start'
-            }}
-          /> */}
-        </View>
-        <ScrollView style={styles.recipeContent}>
-          <View style={styles.header}>
-            <CustomText text={item.title} fontSize={40} fontFamily={FontsEnum.SEN_EXTRABOLD} color={ColorsEnum.DARK_GREEN} />
+          <View style={styles.topContainerWrapper}>
+            <CustomStepIndicator labels={labels} currentPosition={currentPosition} />
           </View>
-          {/* <RecipeContent item={item} labels={labels} /> */}
-        </ScrollView>
-      </View>
+            <RecipeContent currentStep={currentPosition} recipe={recipe} labels={labels} />
+          <View style={styles.stepButtonsContainer}>
+            {buttonBack}
+            {buttonForward}
+            {buttonComplete}
+          </View>
+        </View>
       </>
     )
 }

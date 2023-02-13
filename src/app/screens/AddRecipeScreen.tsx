@@ -8,7 +8,7 @@ import CustomPicker from '../components/shared/CustomPicker';
 import CustomButton from '../components/shared/CustomButton';
 import CustomCheckBox from '../components/shared/CustomCheckBox';
 import { Formik } from 'formik';
-import { Ingredient, RecipeListItem } from '../interfaces/recipe.interface';
+import { Ingredient, Recipe } from '../interfaces/recipe.interface';
 import { addRecipe } from '../services/dataApi';
 import { ScreensEnum } from '../enums/screens.enum';
 import { useNavigation } from '@react-navigation/native';
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const initialFormValues: RecipeListItem = {
+const initialFormValues: Recipe = {
   title: '',
   category: '',
   time: '',
@@ -79,7 +79,7 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
   }, [isAddedToFavourites, setIsAddedToFavourites]);
 
   //ToDo add error handling
-  const addNewRecipe = async (recipeItems: RecipeListItem): Promise<void> => {
+  const addNewRecipe = async (recipeItems: Recipe): Promise<void> => {
     try {
       // await AddRecipeValidationSchema.validate(recipeItems);
       await addRecipe(recipeItems);
@@ -128,7 +128,7 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
     <View style={styles.wrapper}>
         {/* <KeyboardAvoidingView behavior={'position'} style={styles.container}> */}
         <CustomText text={'Add recipe'} fontSize={40} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} style={styles.title} />
-        <CustomStepIndicator style={styles.stepIndicator} currentPosition={currentPosition} labels={labels} stepCount={labels.length} />
+        <CustomStepIndicator style={styles.stepIndicator} currentPosition={currentPosition} labels={labels} />
 
         <Formik
           initialValues={initialFormValues}

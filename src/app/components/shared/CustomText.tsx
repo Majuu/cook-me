@@ -9,11 +9,12 @@ interface CustomTextPropsInterface {
   fontFamily: FontsEnum;
   color: ColorsEnum;
   numberOfLines?: number;
+  textAlignPosition?: 'center' | 'left';
   style?: HTMLStyleElement;
 }
 
 const styles = StyleSheet.create({
-  textStyles: {
+  textCentered: {
     textAlign: 'center'
   }
 });
@@ -24,8 +25,9 @@ const CustomText: FunctionComponent<CustomTextPropsInterface> = ({
   fontFamily,
   fontSize,
   numberOfLines,
-  style
-}: CustomTextPropsInterface): React.ReactElement => {
+  style,
+  textAlignPosition = 'center'
+}): React.ReactElement => {
   const propsStyles = StyleSheet.create({
     textStyling: {
       fontSize: fontSize,
@@ -35,7 +37,7 @@ const CustomText: FunctionComponent<CustomTextPropsInterface> = ({
   });
   return (
     <View style={style}>
-      <Text numberOfLines={numberOfLines} style={[propsStyles.textStyling, styles.textStyles]}>{text}</Text>
+      <Text numberOfLines={numberOfLines} style={[propsStyles.textStyling, textAlignPosition === 'center' && styles.textCentered]}>{text}</Text>
     </View>
   );
 };
