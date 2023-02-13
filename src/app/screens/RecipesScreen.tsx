@@ -11,25 +11,23 @@ import {
   ListRenderItemInfo,
   Route,
   StyleSheet,
+  Text,
   View,
 } from 'react-native';
-import {connect} from 'react-redux';
-import {modalActions} from '../store/actions/modal.actions';
-import {Dispatch} from 'redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {ColorsEnum} from '../enums/colors.enum';
 import RecipesListItem from '../components/RecipesList/RecipeListItem';
 import RecipeListNavbar from '../components/RecipesList/RecipeListNavbar';
-import {getAllRecipes, getFavouritesRecipes} from '../services/dataApi';
+import {getAllRecipes, getFavouriteRecipes} from '../services/dataApi';
 import {recipeActions} from '../store/actions/recipe.actions';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import { ScreensEnum } from '../enums/screens.enum';
 import { Recipe } from '../interfaces/recipe.interface';
+import { RootState } from '../store/store';
+import { updateAllRecipes, updateFavourites } from '../store/reducers/recipeSlice';
 
 interface AllRecipesScreenProps {
   modal: boolean;
-  dispatch: Dispatch;
-  allRecipes: Recipe[];
-  favouriteRecipes: Recipe[];
 }
 
 const styles = StyleSheet.create({
@@ -45,99 +43,103 @@ const styles = StyleSheet.create({
 });
 
 const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
-  dispatch,
-  allRecipes,
-  favouriteRecipes,
 }: AllRecipesScreenProps): React.ReactElement => {
-  const [itemInModal, setItemInModal] = useState<any>(null);
-  const [searchItem, setSearchItem] = useState<string>('');
+  // const [itemInModal, setItemInModal] = useState<any>(null);
+  // const [searchItem, setSearchItem] = useState<string>('');
   const [searchCategory, setSearchCategory] = useState<string>('all');
   const route: Route = useRoute();
   const navigation: Route = useNavigation();
+  const allRecipes = useSelector((state: RootState) => state.recipes.recipeList);
+  const favouriteRecipes = useSelector((state: RootState) => state.recipes.favouritesRecipes);
+  const dispatch = useDispatch();
 
-  //ToDo check typing
+    //ToDo check typing
   // @ts-ignore
   const isFavouriteRecipesScreen: boolean =
     route.params && route.params.isMyRecipes;
 
-  const setSearchedItem = useCallback(
-    (inputValue: string) => {
-      setSearchItem(inputValue);
-    },
-    [setSearchItem],
-  );
-
-  const setSearchedCategory = useCallback(
-    (categoryValue: string) => {
-      setSearchCategory(categoryValue);
-    },
-    [setSearchCategory],
-  );
-
-  const itemsToGenerate: Recipe[] = useMemo(() => {
-    const recipes: Recipe[] = isFavouriteRecipesScreen
-      ? favouriteRecipes
-      : allRecipes;
-    const recipesFilteredByCategory: Recipe[] =
-      searchCategory !== 'all'
-        ? recipes.filter(
-            (recipe: Recipe) =>
-              recipe.category.toLowerCase() === searchCategory,
-          )
-        : recipes;
-
-    if (searchItem.length > 0) {
-      return recipesFilteredByCategory.filter((recipeItem: Recipe) =>
-        recipeItem.title.toLowerCase().includes(searchItem.toLowerCase()),
-      );
-    } else {
-      return recipesFilteredByCategory;
-    }
-  }, [
-    isFavouriteRecipesScreen,
-    allRecipes,
-    favouriteRecipes,
-    searchItem,
-    searchCategory,
-  ]);
-
-  const setAllRecipes = async () => {
-    const result = await getAllRecipes();
-    if (result) {
-      dispatch({
-        type: recipeActions.SET_ALL_RECIPES,
-        payload: result,
-      });
-    }
-  };
-
-  const setFavouriteRecipes = async () => {
-    const result = await getFavouritesRecipes();
-    if (result) {
-      dispatch({
-        type: recipeActions.SET_FAVOURITE_RECIPES,
-        payload: result,
-      });
-    }
-  };
-
   useEffect(() => {
-    if (isFavouriteRecipesScreen) {
-      setFavouriteRecipes();
-    } else {
-      setAllRecipes();
+    if(!isFavouriteRecipesScreen && !allRecipes.length) {
+      updateAllRecipesList();
     }
-  });
 
-  const openModal = (): any =>
-    dispatch({
-      type: modalActions.SHOW_RECIPE_MODAL,
-    });
+    if(isFavouriteRecipesScreen && !favouriteRecipes.length) {
+      updateFavouriteRecipesList();
+    }
+  }, [])
 
-  const handleModalOpen = (item: Recipe) => {
-    setItemInModal(item);
-    openModal();
-  };
+  const updateAllRecipesList = async (): Promise<void> => {
+    try {
+      const recipeList = await getAllRecipes();
+      if (recipeList) {
+        dispatch(updateAllRecipes(recipeList));
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const updateFavouriteRecipesList = async (): Promise<void> => {
+    try {
+      const recipeList = await getFavouriteRecipes();
+      if (recipeList) {
+        dispatch(updateFavourites(recipeList));
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+// =========================================================
+  // const setSearchedItem = useCallback(
+  //   (inputValue: string) => {
+  //     setSearchItem(inputValue);
+  //   },
+  //   [setSearchItem],
+  // );
+
+  // const setSearchedCategory = useCallback(
+  //   (categoryValue: string) => {
+  //     setSearchCategory(categoryValue);
+  //   },
+  //   [setSearchCategory],
+  // );
+
+  // const itemsToGenerate: Recipe[] = useMemo(() => {
+  //   const recipes: Recipe[] = isFavouriteRecipesScreen
+  //     ? favouriteRecipes
+  //     : allRecipes;
+  //   const recipesFilteredByCategory: Recipe[] =
+  //     searchCategory !== 'all'
+  //       ? recipes.filter(
+  //           (recipe: Recipe) =>
+  //             recipe.category.toLowerCase() === searchCategory,
+  //         )
+  //       : recipes;
+
+  //   if (searchItem.length > 0) {
+  //     return recipesFilteredByCategory.filter((recipeItem: Recipe) =>
+  //       recipeItem.title.toLowerCase().includes(searchItem.toLowerCase()),
+  //     );
+  //   } else {
+  //     return recipesFilteredByCategory;
+  //   }
+  // }, [
+  //   isFavouriteRecipesScreen,
+  //   allRecipes,
+  //   favouriteRecipes,
+  //   searchItem,
+  //   searchCategory,
+  // ]);
+
+  // const openModal = (): any =>
+  //   dispatch({
+  //     type: modalActions.SHOW_RECIPE_MODAL,
+  //   });
+
+  // const handleModalOpen = (item: Recipe) => {
+  //   setItemInModal(item);
+  //   openModal();
+  // };
 
   const navigateToRecipeDetails = useCallback((item: any) => {
     navigation.navigate(ScreensEnum.RECIPE_DETAILS, {recipe: item});
@@ -145,15 +147,16 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
 
   return (
     <View style={styles.container}>
-      <RecipeListNavbar
+      {/* <RecipeListNavbar
         setSearchItem={setSearchedItem}
         searchItem={searchItem}
         searchCategory={searchCategory}
         setSearchCategory={setSearchedCategory}
-      />
+      /> */}
       <FlatList
         style={styles.itemList}
-        data={itemsToGenerate}
+        // data={itemsToGenerate}
+        data={isFavouriteRecipesScreen ? favouriteRecipes : allRecipes}
         renderItem={(
           recipe: ListRenderItemInfo<Recipe>,
         ): ReactElement => (
@@ -161,8 +164,8 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
             item={recipe.item}
             key={recipe.item.title}
             onPress={() => navigateToRecipeDetails(recipe.item)}
-            setAllRecipes={setAllRecipes}
-            setFavouriteRecipes={setFavouriteRecipes}
+            // setAllRecipes={setAllRecipes}
+            // setFavouriteRecipes={setFavouriteRecipes}
           />
         )}
         keyExtractor={(item: Recipe): string => item.title}
@@ -172,8 +175,4 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
   );
 };
 
-export default connect((state: any): any => ({
-  modal: state.modal.isModalVisible,
-  allRecipes: state.recipe.allRecipes,
-  favouriteRecipes: state.recipe.favouriteRecipes,
-}))(RecipesScreen);
+export default RecipesScreen;

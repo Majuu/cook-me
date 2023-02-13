@@ -13,14 +13,15 @@ import React, { FunctionComponent, useCallback } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ColorsEnum } from "../../enums/colors.enum";
 import { FontsEnum } from "../../enums/fonts.enum";
-import { RecipeListItem } from "../../interfaces/recipe.interface";
+// import { RecipeListItem } from "../../interfaces/recipe.interface";
 import CustomText from "../shared/CustomText";
+import { Recipe } from '../../interfaces/recipe.interface';
 
 interface RecipeListItemProps {
   onPress: () => void;
-  item: RecipeListItem;
-  setAllRecipes: () => void;
-  setFavouriteRecipes: () => void;
+  item: Recipe;
+  // setAllRecipes: () => void;
+  // setFavouriteRecipes: () => void;
 }
 
 const styles = StyleSheet.create({
@@ -65,8 +66,8 @@ const styles = StyleSheet.create({
 const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
   item,
   onPress,
-  setAllRecipes,
-  setFavouriteRecipes,
+  // setAllRecipes,
+  // setFavouriteRecipes,
 }: RecipeListItemProps) => {
   const titleFontSize: number = 23;
   const subtitleFontSize: number = 17;
@@ -75,8 +76,8 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
 
   const changeIsFavourites = useCallback(async () => {
     await editRecipe({ ...item, isFavourite: !isFavourite }, id as number);
-    setFavouriteRecipes();
-    setAllRecipes();
+    // setFavouriteRecipes();
+    // setAllRecipes();
   }, [item, isFavourite, id]);
 
   return (

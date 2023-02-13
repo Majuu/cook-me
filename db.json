@@ -81,7 +81,7 @@
       "title": "Apple Pie",
       "category": "cakes",
       "time": "00:30:00",
-      "isFavourite": true,
+      "isFavourite": false,
       "ingredients": [
         {
           "name": "flour",

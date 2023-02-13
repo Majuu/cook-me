@@ -127,8 +127,6 @@ import React, {
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
-import {Provider} from 'react-redux';
-import {store} from './src/app/store/store';
 import MenuScreen from './src/app/screens/MenuScreen';
 import IntroScreen from './src/app/screens/IntroScreen';
 import RecipeListScreen from './src/app/screens/RecipesScreen';
@@ -137,6 +135,8 @@ import {ScreensEnum} from './src/app/enums/screens.enum';
 import AddRecipeScreen from './src/app/screens/AddRecipeScreen';
 import FullScreenContainer from './src/app/components/FullScreenContainer';
 import RecipeDeailsScreen from './src/app/screens/RecipeDetailsScreen';
+import { Provider } from 'react-redux';
+import { store } from './src/app/store/store';
 
 interface StackedScreensInterface {
   name: ScreensEnum;

@@ -1,10 +1,12 @@
-import { RecipeListItem } from '../interfaces/recipe.interface';
+// import { RecipeListItem } from '../interfaces/recipe.interface';
+
+import { Recipe } from "../interfaces/recipe.interface";
 
 // url works only if json server is live
 // const url = 'http://10.0.2.2:3000'; // android?
 const url = 'http://localhost:3000';
 
-export async function getAllRecipes(): Promise<RecipeListItem> {
+export async function getAllRecipes(): Promise<Recipe[]> {
   const response = await fetch(`${url}/recipes`);
   if (response.status < 400) {
     return await response.json();
@@ -13,7 +15,7 @@ export async function getAllRecipes(): Promise<RecipeListItem> {
   }
 }
 
-export async function addRecipe(inputData: RecipeListItem): Promise<void> {
+export async function addRecipe(inputData: Recipe): Promise<void> {
   const response = await fetch(`${url}/recipes`, {
     method: 'POST',
     headers: {
@@ -28,7 +30,7 @@ export async function addRecipe(inputData: RecipeListItem): Promise<void> {
   }
 }
 
-export async function getFavouritesRecipes() {
+export async function getFavouriteRecipes() {
   const response = await fetch(`${url}/recipes?isFavourite=true`);
   if (response.status < 400) {
     return await response.json();
@@ -37,7 +39,7 @@ export async function getFavouritesRecipes() {
   }
 }
 
-export async function editRecipe(inputData: RecipeListItem, id: number): Promise<void> {
+export async function editRecipe(inputData: Recipe, id: number): Promise<void> {
   const response = await fetch(`${url}/recipes/${id}`, {
     method: 'PUT',
     headers: {
