@@ -32,12 +32,12 @@ const MenuScreen: FunctionComponent<MenuScreenProps> = ({
   navigation,
 }: MenuScreenProps): React.ReactElement => {
   const data: MenuItemListInterface[] = [
-    // {
-    //   id: 'learn',
-    //   title: textPlaceholders.menuScreen.learn,
-    //   image: <Learn width={imgDimensions} height={imgDimensions} />,
-    //   screenToNavigate: ScreensEnum.LEARN_BASICS
-    // },
+    {
+      id: 'learn',
+      title: textPlaceholders.menuScreen.learn,
+      image: <Learn width={'20%'} height={'150%'} />,
+      screenToNavigate: ScreensEnum.LEARN_BASICS
+    },
     {
       id: 'list',
       title: textPlaceholders.menuScreen.list,

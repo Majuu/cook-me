@@ -5,7 +5,7 @@ export const textPlaceholders = {
     letsStart: "Let's get started!"
   },
   menuScreen: {
-    learn: 'Learn the basics',
+    learn: 'Learn to cook',
     myList: 'My recipe list',
     list: 'All recipes',
     addRecipe: 'Add a recipe'

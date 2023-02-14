@@ -1,3 +1,4 @@
 - unit testing
 - animations?
-- profile / tutorials tabs?
+- tutorials tabs?
+- replace db data with real data
