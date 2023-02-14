@@ -6,7 +6,7 @@ import DinnerIcon from '../../../../assets/images/recipe-categories-icons/dinner
 import DessertIcon from '../../../../assets/images/recipe-categories-icons/dessert.svg';
 import {editRecipe} from '../../services/dataApi';
 import React, { FunctionComponent, useCallback, useMemo } from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ColorsEnum } from "../../enums/colors.enum";
 import { FontsEnum } from "../../enums/fonts.enum";
 import CustomText from "../shared/CustomText";
@@ -91,7 +91,6 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
         activeOpacity={0.7}
         onPress={onPress}>
         <View style={styles.leftMenuWrapper}>
-          {/* <Image source={require('../../../../assets/images/muffin.jpg')} style={styles.icon}/> */}
           {generateCategoryIcon()}
           <View style={styles.descriptionWrapper}>
             <CustomText
