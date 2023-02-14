@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
-import { KeyboardAvoidingView, Route, StyleSheet, View } from 'react-native';
+import { Route, StyleSheet, View } from 'react-native';
 import { ColorsEnum } from '../enums/colors.enum';
 import CustomText from '../components/shared/CustomText';
 import { FontsEnum } from '../enums/fonts.enum';
@@ -64,7 +64,6 @@ const initialFormValues: Recipe = {
 };
 
 //ToDo add image later
-//ToDo add validator
 const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
   const [isAddedToFavourites, setIsAddedToFavourites] = useState<boolean>(false);
   const [time, setTime] = useState<string>('00:00:00');
@@ -81,7 +80,6 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
   //ToDo add error handling
   const addNewRecipe = async (recipeItems: Recipe): Promise<void> => {
     try {
-      // await AddRecipeValidationSchema.validate(recipeItems);
       await addRecipe(recipeItems);
       navigation.navigate(ScreensEnum.MENU);
     } catch (e) {
@@ -126,7 +124,6 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
 
   return (
     <View style={styles.wrapper}>
-        {/* <KeyboardAvoidingView behavior={'position'} style={styles.container}> */}
         <CustomText text={'Add recipe'} fontSize={40} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} style={styles.title} />
         <CustomStepIndicator style={styles.stepIndicator} currentPosition={currentPosition} labels={labels} />
 
@@ -204,7 +201,6 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
             </View>
           )}
         </Formik>
-        {/* </KeyboardAvoidingView> */}
       </View>
   );
 };

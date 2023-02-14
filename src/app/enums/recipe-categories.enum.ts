@@ -1,5 +1,6 @@
 export enum RecipeCategories {
     BREAKFAST = 'Breakfast',
     DINNER = 'Dinner',
-    DESSERT = 'Dessert'
+    DESSERT = 'Dessert',
+    NONE = 'None'
 }

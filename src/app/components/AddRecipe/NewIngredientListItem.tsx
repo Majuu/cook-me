@@ -4,7 +4,7 @@ import { ColorsEnum } from "../../enums/colors.enum";
 import { FontsEnum } from "../../enums/fonts.enum";
 import { Ingredient } from "../../interfaces/recipe.interface";
 import CustomText from "../shared/CustomText";
-import Bin from '../../../assets/images/app-interaction-icons/bin.svg';
+import Bin from '../../../../assets/images/app-interaction-icons/bin.svg'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { IngredientUnit } from "../../enums/ingredient-units.enum";
 

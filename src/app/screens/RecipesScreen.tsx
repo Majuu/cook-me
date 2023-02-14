@@ -3,6 +3,7 @@ import React, {
   ReactElement,
   useCallback,
   useEffect,
+  useState,
 } from 'react';
 import {
   FlatList,
@@ -11,7 +12,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {ColorsEnum} from '../enums/colors.enum';
 import RecipesListItem from '../components/RecipesList/RecipeListItem';
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -20,6 +21,9 @@ import { Recipe } from '../interfaces/recipe.interface';
 import { RootState } from '../store/store';
 import { fetchAllRecipes, fetchFavouriteRecipes } from '../store/reducers/recipeSlice';
 import { ThunkDispatch } from '@reduxjs/toolkit';
+import RecipeListNavbar from '../components/RecipesList/RecipeListNavbar';
+import { RecipeCategories } from '../enums/recipe-categories.enum';
+import { useRecipeList } from '../hooks/recipeList';
 
 interface AllRecipesScreenProps {
   modal: boolean;
@@ -31,25 +35,26 @@ const styles = StyleSheet.create({
   },
   itemList: {
     backgroundColor: ColorsEnum.GREEN,
-  },
+  }
 });
 
 const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
-}: AllRecipesScreenProps): React.ReactElement => {
+}): React.ReactElement => {
   const route: Route = useRoute();
   const navigation: Route = useNavigation();
-  const allRecipes = useSelector((state: RootState) => state.recipes.recipeList);
-  const favouriteRecipes = useSelector((state: RootState) => state.recipes.favouritesRecipes);
   const dispatch = useDispatch<ThunkDispatch<RootState, any, any>>();
-  const isFavouriteRecipesScreen: boolean =
-    route.name === ScreensEnum.MY_RECIPES;
+  const isAllRecipesScreen: boolean =
+    route.name === ScreensEnum.RECIPE_LIST;
+  const [searchItem, setSearchedItem] = useState('');
+  const [searchedCategory, setSearchedCategory] = useState<RecipeCategories>();
+  const currentRecipes = useRecipeList(isAllRecipesScreen, searchedCategory, searchItem);
 
   useEffect(() => {
-    if(!isFavouriteRecipesScreen && !allRecipes.length) {
+    if(isAllRecipesScreen && !currentRecipes.length) {
       dispatch(fetchAllRecipes())
     }
 
-    if(isFavouriteRecipesScreen && !favouriteRecipes.length) {
+    if(!isAllRecipesScreen && !currentRecipes.length) {
       dispatch(fetchFavouriteRecipes());
     }
   }, [])
@@ -60,15 +65,14 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
 
   return (
     <View style={styles.container}>
-      {/* <RecipeListNavbar
+      <RecipeListNavbar
         setSearchItem={setSearchedItem}
         searchItem={searchItem}
-        searchCategory={searchCategory}
         setSearchCategory={setSearchedCategory}
-      /> */}
+      />
       <FlatList
         style={styles.itemList}
-        data={isFavouriteRecipesScreen ? favouriteRecipes : allRecipes}
+        data={currentRecipes}
         renderItem={(
           recipe: ListRenderItemInfo<Recipe>,
         ): ReactElement => (

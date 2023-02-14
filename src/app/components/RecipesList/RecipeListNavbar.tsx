@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, SetStateAction } from 'react';
 import { StyleSheet, View } from 'react-native';
 import CustomText from '../shared/CustomText';
 import CustomPicker from '../shared/CustomPicker';
@@ -8,12 +8,12 @@ import { FontsEnum } from '../../enums/fonts.enum';
 import { useRoute } from '@react-navigation/native';
 import CustomInput from '../shared/CustomInput';
 import { ScreensEnum } from '../../enums/screens.enum';
+import { RecipeCategories } from '../../enums/recipe-categories.enum';
 
 interface RecipeListNavbarProps {
   searchItem: string;
-  setSearchItem: any;
-  searchCategory: string;
-  setSearchCategory: any;
+  setSearchItem: SetStateAction<any>;
+  setSearchCategory: SetStateAction<any>;
 }
 
 const styles = StyleSheet.create({
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     height: 135
   },
-  picker: {
-    width: '45%'
+  inputDimension: {
+    width: '48%'
   },
   contentWrapper: {
     width: '100%',
@@ -45,14 +45,12 @@ const styles = StyleSheet.create({
 const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
   setSearchItem,
   setSearchCategory,
-  searchCategory,
   searchItem
 }: RecipeListNavbarProps) => {
   const route = useRoute();
   const { title, myRecipesTitle } = textPlaceholders.allRecipes;
-  // @ts-ignore
-  // const isFavouriteRecipesScreen: boolean = route.params && route.params.isMyRecipes;
   const isFavouriteRecipesScreen: boolean = route.name === ScreensEnum.MY_RECIPES;
+  const recipeCategories: RecipeCategories[] = [RecipeCategories.BREAKFAST, RecipeCategories.DINNER, RecipeCategories.DESSERT, RecipeCategories.NONE];
 
   return (
     <View style={styles.container}>
@@ -64,9 +62,8 @@ const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
         color={ColorsEnum.DARK_GREEN}
       />
       <View style={styles.contentWrapper}>
-        <CustomInput placeholder={'Search'} onChange={setSearchItem} value={searchItem} isSearchBar={true} style={styles.picker} />
-        {/* pastry categories was in list previously */}
-        {/* <CustomPicker list={[]} onChange={setSearchCategory} style={styles.picker} value={} /> */}
+        <CustomInput placeholder={'Search'} onChange={setSearchItem} value={searchItem} isSearchBar={true} style={styles.inputDimension} />
+        <CustomPicker placeholder={'Filter by...'} style={styles.inputDimension} list={recipeCategories} onChange={setSearchCategory} />
       </View>
     </View>
   );

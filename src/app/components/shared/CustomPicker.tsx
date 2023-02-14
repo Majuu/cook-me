@@ -1,8 +1,9 @@
-import React, { FunctionComponent, useRef } from 'react';
+import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
 import { ColorsEnum } from '../../enums/colors.enum';
 import SelectDropdown from 'react-native-select-dropdown';
 import { FontsEnum } from '../../enums/fonts.enum';
+import DropdownArrow from '../../../../assets/images/app-interaction-icons/dropdown-arrow.svg';
 
 interface CustomPickerProps {
   list: Array<any>;
@@ -35,11 +36,13 @@ const styles = StyleSheet.create({
   dropdownRow: {
     borderBottomWidth: 2, 
     borderBottomColor: ColorsEnum.LIGHT_GREEN
+  },
+  dropdownIcon: {
+    marginRight: 5
   }
 });
 
 const CustomPicker: FunctionComponent<CustomPickerProps> = ({ list, onChange, style, placeholder, reference }): React.ReactElement => {
-
   return (
       <SelectDropdown
         onChangeSearchInputText={() => {}}
@@ -55,6 +58,8 @@ const CustomPicker: FunctionComponent<CustomPickerProps> = ({ list, onChange, st
         dropdownOverlayColor={'none'}
         buttonStyle={{...styles.buttonContainer, ...style}}
         ref={reference}
+        dropdownIconPosition={'right'}
+        renderDropdownIcon={() => <DropdownArrow height={15} width={15} style={styles.dropdownIcon} />}
         />
   );
 };

@@ -7,7 +7,6 @@ import SearchIcon from '../../../../assets/images/search.svg';
 interface CustomInputProps {
   placeholder: string;
   onChange: (e: string | ChangeEvent<any>) => void;
-  //ToDo correct the typing
   value?: string;
   autoFocus?: boolean;
   multiline?: boolean;
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     fontFamily: FontsEnum.SEN_REGULAR,
     color: ColorsEnum.DARK_GREEN,
-    height: 46,
+    height: 46
   },
   multilineInput: {
     height: 'auto',
@@ -50,6 +49,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: ColorsEnum.GREEN,
     borderRadius: 15,
+    height: 46
   },
   searchIcon: {
     marginLeft: 10,
@@ -88,9 +88,8 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
 
   return (
     <View style={containerStyles}>
-      {isSearchBar && (
-        <SearchIcon width={19} height={19} style={styles.searchIcon} />
-      )}
+      {isSearchBar && <SearchIcon width={15} height={15} style={styles.searchIcon} />
+      }
       <TextInput
         multiline={multiline}
         numberOfLines={multiline ? 10 : 1}

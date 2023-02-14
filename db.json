@@ -56,7 +56,7 @@
       "title": "Cookies",
       "category": "cookies",
       "time": "00:30:00",
-      "isFavourite": true,
+      "isFavourite": false,
       "ingredients": [
         {
           "name": "flour",
@@ -169,6 +169,30 @@
         }
       ],
       "id": 7
+    },
+    {
+      "title": "Omlet",
+      "category": "Breakfast",
+      "time": "01:00:00",
+      "description": [
+        "Wszystko wymieszaj",
+        "Usmaż\n"
+      ],
+      "authors": "Arturek",
+      "isFavourite": true,
+      "ingredients": [
+        {
+          "name": "Eggs",
+          "amount": "2",
+          "unit": "-"
+        },
+        {
+          "name": "Flour",
+          "amount": "100",
+          "unit": "g"
+        }
+      ],
+      "id": 8
     }
   ]
 }
