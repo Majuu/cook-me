@@ -1,0 +1,3 @@
+- unit testing
+- animations?
+- profile / tutorials tabs?

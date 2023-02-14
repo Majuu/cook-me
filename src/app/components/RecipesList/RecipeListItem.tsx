@@ -1,27 +1,25 @@
-// import React, {FunctionComponent, useCallback} from 'react';
-// import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-// import CustomText from '../shared/CustomText';
-// import {ColorsEnum} from '../../enums/colors.enum';
-// import {FontsEnum} from '../../enums/fonts.enum';
 import Timer from '../../../../assets/images/app-interaction-icons/clock.svg';
-import InactiveStar from '../../../../assets/images/app-interaction-icons/star-empty.svg';
-import ActiveStar from '../../../../assets/images/app-interaction-icons/star-active.svg';
-// import {RecipeListItem} from '../../interfaces/recipe.interface';
-import {editRecipe} from '../../services/dataApi';
+// import InactiveStar from '../../../../assets/images/app-interaction-icons/star-empty.svg';
+// import ActiveStar from '../../../../assets/images/app-interaction-icons/star-active.svg';
+import FavouriteIcon from '../../../../assets/images/app-interaction-icons/favourite.svg';
+import NotFavouriteIcon from '../../../../assets/images/app-interaction-icons/not-favourite.svg';
 
+
+import {editRecipe} from '../../services/dataApi';
 import React, { FunctionComponent, useCallback } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ColorsEnum } from "../../enums/colors.enum";
 import { FontsEnum } from "../../enums/fonts.enum";
-// import { RecipeListItem } from "../../interfaces/recipe.interface";
 import CustomText from "../shared/CustomText";
 import { Recipe } from '../../interfaces/recipe.interface';
+import { fetchAllRecipes, fetchFavouriteRecipes } from '../../store/reducers/recipeSlice';
+import { useDispatch } from 'react-redux';
+import { ThunkDispatch } from '@reduxjs/toolkit';
+import { RootState } from '../../store/store';
 
 interface RecipeListItemProps {
   onPress: () => void;
   item: Recipe;
-  // setAllRecipes: () => void;
-  // setFavouriteRecipes: () => void;
 }
 
 const styles = StyleSheet.create({
@@ -55,29 +53,24 @@ const styles = StyleSheet.create({
   },
   clock: {
     marginRight: 5,
-  },
-  linearGradient: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-  },
+  }
 });
 
 const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
   item,
   onPress,
-  // setAllRecipes,
-  // setFavouriteRecipes,
 }: RecipeListItemProps) => {
   const titleFontSize: number = 23;
   const subtitleFontSize: number = 17;
   const timeSize: number = 15;
   const {title, category, time, isFavourite, id} = item;
+  const dispatch = useDispatch<ThunkDispatch<RootState, any, any>>();
 
   const changeIsFavourites = useCallback(async () => {
     await editRecipe({ ...item, isFavourite: !isFavourite }, id as number);
-    // setFavouriteRecipes();
-    // setAllRecipes();
+    dispatch(fetchAllRecipes());
+    dispatch(fetchFavouriteRecipes());
+
   }, [item, isFavourite, id]);
 
   return (
@@ -112,8 +105,14 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
             </View>
           </View>
         </View>
-        {!isFavourite && <InactiveStar height={30} width={30} onPress={changeIsFavourites} />}
-        {isFavourite && <ActiveStar height={30} width={30} onPress={changeIsFavourites} />}
+        {isFavourite ? 
+        <TouchableOpacity onPress={changeIsFavourites}>
+          <FavouriteIcon height={30} width={30}  />
+        </TouchableOpacity>
+        :
+        <TouchableOpacity onPress={changeIsFavourites}>
+          <NotFavouriteIcon height={30} width={30} />
+        </TouchableOpacity>}
       </TouchableOpacity>
     </React.Fragment>
   );

@@ -5,9 +5,9 @@ import CustomPicker from '../shared/CustomPicker';
 import { textPlaceholders } from '../../consts/text-placeholders.const';
 import { ColorsEnum } from '../../enums/colors.enum';
 import { FontsEnum } from '../../enums/fonts.enum';
-import { pastryCategories } from '../../consts/pastry-categories.const';
 import { useRoute } from '@react-navigation/native';
 import CustomInput from '../shared/CustomInput';
+import { ScreensEnum } from '../../enums/screens.enum';
 
 interface RecipeListNavbarProps {
   searchItem: string;
@@ -51,7 +51,8 @@ const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
   const route = useRoute();
   const { title, myRecipesTitle } = textPlaceholders.allRecipes;
   // @ts-ignore
-  const isFavouriteRecipesScreen: boolean = route.params && route.params.isMyRecipes;
+  // const isFavouriteRecipesScreen: boolean = route.params && route.params.isMyRecipes;
+  const isFavouriteRecipesScreen: boolean = route.name === ScreensEnum.MY_RECIPES;
 
   return (
     <View style={styles.container}>
@@ -64,7 +65,8 @@ const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
       />
       <View style={styles.contentWrapper}>
         <CustomInput placeholder={'Search'} onChange={setSearchItem} value={searchItem} isSearchBar={true} style={styles.picker} />
-        <CustomPicker list={pastryCategories} onChange={setSearchCategory} style={styles.picker} value={searchCategory} />
+        {/* pastry categories was in list previously */}
+        {/* <CustomPicker list={[]} onChange={setSearchCategory} style={styles.picker} value={} /> */}
       </View>
     </View>
   );

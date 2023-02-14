@@ -5,7 +5,7 @@
       "title": "Chocolate Muffin",
       "category": "muffins",
       "time": "00:30:00",
-      "isFavourite": true,
+      "isFavourite": false,
       "ingredients": [
         {
           "name": "flour",
@@ -31,7 +31,7 @@
       "title": "Biscuits",
       "category": "cookies",
       "time": "00:30:00",
-      "isFavourite": true,
+      "isFavourite": false,
       "ingredients": [
         {
           "name": "flour",
@@ -56,7 +56,7 @@
       "title": "Cookies",
       "category": "cookies",
       "time": "00:30:00",
-      "isFavourite": false,
+      "isFavourite": true,
       "ingredients": [
         {
           "name": "flour",
@@ -160,7 +160,7 @@
         "Kjdhgfkjhdf"
       ],
       "authors": "Ds",
-      "isFavourite": true,
+      "isFavourite": false,
       "ingredients": [
         {
           "name": "Eggs",
