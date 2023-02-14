@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Slider from '@react-native-community/slider';
-import { ColorsEnum } from '../enums/colors.enum';
-import CustomText from './shared/CustomText';
-import { FontsEnum } from '../enums/fonts.enum';
+import { ColorsEnum } from '../../enums/colors.enum';
+import CustomText from '../shared/CustomText';
+import { FontsEnum } from '../../enums/fonts.enum';
 
 interface SlidingTimePickerProps {
   minValue: number;

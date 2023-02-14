@@ -2,14 +2,14 @@ import { Formik, FormikConfig, FormikErrors, FormikProps, FormikState } from "fo
 import { FunctionComponent, ReactElement, useEffect, useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
-import { ingredientUnits } from "../consts/ingredient-units.const";
-import { predefinedIngredients } from "../consts/predefined-ingredients.const";
-import { IngredientUnit } from "../enums/ingredient-units.enum";
-import { AddIngredientValidationSchema } from "../helpers/validator";
-import { Ingredient } from "../interfaces/recipe.interface";
-import CustomButton from "./shared/CustomButton";
-import CustomInput from "./shared/CustomInput";
-import CustomPicker from "./shared/CustomPicker";
+import { ingredientUnits } from "../../consts/ingredient-units.const";
+import { predefinedIngredients } from "../../consts/predefined-ingredients.const";
+import { IngredientUnit } from "../../enums/ingredient-units.enum";
+import { AddIngredientValidationSchema } from "../../helpers/validator";
+import { Ingredient } from "../../interfaces/recipe.interface";
+import CustomButton from "../shared/CustomButton";
+import CustomInput from "../shared/CustomInput";
+import CustomPicker from "../shared/CustomPicker";
 
 interface AddNewIngredientProps {
     onAddNewIngredient: Function;

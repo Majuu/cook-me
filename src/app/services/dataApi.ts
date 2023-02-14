@@ -1,5 +1,3 @@
-// import { RecipeListItem } from '../interfaces/recipe.interface';
-
 import { Recipe } from "../interfaces/recipe.interface";
 
 // url works only if json server is live
@@ -30,7 +28,7 @@ export async function addRecipe(inputData: Recipe): Promise<void> {
   }
 }
 
-export async function getFavouriteRecipes() {
+export async function getFavouriteRecipes(): Promise<Recipe[]> {
   const response = await fetch(`${url}/recipes?isFavourite=true`);
   if (response.status < 400) {
     return await response.json();
@@ -39,6 +37,7 @@ export async function getFavouriteRecipes() {
   }
 }
 
+// does thsi return void?
 export async function editRecipe(inputData: Recipe, id: number): Promise<void> {
   const response = await fetch(`${url}/recipes/${id}`, {
     method: 'PUT',

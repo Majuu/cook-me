@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import CustomButton from "./shared/CustomButton";
-import CustomInput from "./shared/CustomInput";
+import CustomButton from "../shared/CustomButton";
+import CustomInput from "../shared/CustomInput";
 
 interface AddNewRecipeDescriptionStepProps {
     onAddDescriptionStep: any;

@@ -14,14 +14,14 @@ import { ScreensEnum } from '../enums/screens.enum';
 import { useNavigation } from '@react-navigation/native';
 import { calculateTime } from '../helpers/calculateTime';
 import { AddRecipeValidationSchema } from '../helpers/validator';
-import SlidingTimePicker from '../components/SlidingTimePicker';
+import SlidingTimePicker from '../components/AddRecipe/SlidingTimePicker';
 import CustomStepIndicator from '../components/shared/CustomStepIndicator';
 import { RecipeCategories } from '../enums/recipe-categories.enum';
-import AddNewIngredient from '../components/AddNewIngredient';
+import AddNewIngredient from '../components/AddRecipe/AddNewIngredient';
 import { FlatList } from 'react-native-gesture-handler';
-import NewIngredientListItem from '../components/NewIngredientListItem';
-import AddNewRecipeDescriptionStep from '../components/AddNewRecipeDescriptionStep';
-import NewDescriptionStepListItem from '../components/NewDescriptionStepListItem';
+import NewIngredientListItem from '../components/AddRecipe/NewIngredientListItem';
+import AddNewRecipeDescriptionStep from '../components/AddRecipe/AddNewRecipeDescriptionStep';
+import NewDescriptionStepListItem from '../components/AddRecipe/NewDescriptionStepListItem';
 
 const styles = StyleSheet.create({
   wrapper: {
