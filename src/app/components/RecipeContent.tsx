@@ -6,6 +6,7 @@ import { ColorsEnum } from '../enums/colors.enum';
 import { capitalize } from 'lodash';
 import { Recipe } from '../interfaces/recipe.interface';
 import { ScrollView } from 'react-native-gesture-handler';
+import { IngredientUnit } from '../enums/ingredient-units.enum';
 
 interface RecipeContentProps {
   recipe: Recipe;
@@ -52,6 +53,10 @@ const styles = StyleSheet.create({
   },
   descriptionInnercontainer: {
     width: '95%'
+  },
+  ingredientWithUnitContainer: {
+    display: 'flex',
+    flexDirection: 'row'
   }
 });
 
@@ -88,14 +93,14 @@ const RecipeContent: FunctionComponent<RecipeContentProps> = ({ recipe, labels, 
                   fontFamily={FontsEnum.SEN_BOLD}
                   color={ColorsEnum.DARK_GREEN}
                 />
-                <View>
+                <View style={styles.ingredientWithUnitContainer}>
                 <CustomText
                   text={capitalize(ingredient.amount.toString())}
                   fontSize={22}
                   fontFamily={FontsEnum.SEN_BOLD}
                   color={ColorsEnum.DARK_GREEN}
                 />
-                 {ingredient.unit && <CustomText
+                 {(ingredient.unit && ingredient.unit !== IngredientUnit.NO_UNIT) && <CustomText
                   text={ingredient.unit}
                   fontSize={22}
                   fontFamily={FontsEnum.SEN_BOLD}
