@@ -1,12 +1,11 @@
 import Timer from '../../../../assets/images/app-interaction-icons/clock.svg';
-// import InactiveStar from '../../../../assets/images/app-interaction-icons/star-empty.svg';
-// import ActiveStar from '../../../../assets/images/app-interaction-icons/star-active.svg';
 import FavouriteIcon from '../../../../assets/images/app-interaction-icons/favourite.svg';
 import NotFavouriteIcon from '../../../../assets/images/app-interaction-icons/not-favourite.svg';
-
-
+import BreakfastIcon from '../../../../assets/images/recipe-categories-icons/breakfast.svg';
+import DinnerIcon from '../../../../assets/images/recipe-categories-icons/dinner.svg';
+import DessertIcon from '../../../../assets/images/recipe-categories-icons/dessert.svg';
 import {editRecipe} from '../../services/dataApi';
-import React, { FunctionComponent, useCallback } from "react";
+import React, { FunctionComponent, useCallback, useMemo } from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ColorsEnum } from "../../enums/colors.enum";
 import { FontsEnum } from "../../enums/fonts.enum";
@@ -16,6 +15,7 @@ import { fetchAllRecipes, fetchFavouriteRecipes } from '../../store/reducers/rec
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { RootState } from '../../store/store';
+import { RecipeCategories } from '../../enums/recipe-categories.enum';
 
 interface RecipeListItemProps {
   onPress: () => void;
@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
   },
   leftMenuWrapper: {
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   descriptionWrapper: {
     flexDirection: 'column',
@@ -65,13 +67,22 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
   const timeSize: number = 15;
   const {title, category, time, isFavourite, id} = item;
   const dispatch = useDispatch<ThunkDispatch<RootState, any, any>>();
+  const categoryIconsDimentions = useMemo(() => 70, [])
 
   const changeIsFavourites = useCallback(async () => {
     await editRecipe({ ...item, isFavourite: !isFavourite }, id as number);
     dispatch(fetchAllRecipes());
     dispatch(fetchFavouriteRecipes());
-
   }, [item, isFavourite, id]);
+
+  const breakfast = useMemo(() => <BreakfastIcon height={categoryIconsDimentions} width={categoryIconsDimentions} style={styles.icon} />, []);
+  const dinner = useMemo(() => <DinnerIcon height={categoryIconsDimentions} width={categoryIconsDimentions} style={styles.icon} />, []);
+  const dessert = useMemo(() => <DessertIcon height={categoryIconsDimentions} width={categoryIconsDimentions} style={styles.icon} />, []);
+
+  const generateCategoryIcon = useCallback(() => {
+    return category === RecipeCategories.BREAKFAST ? breakfast : 
+    category === RecipeCategories.DINNER ? dinner : dessert
+  }, [])
 
   return (
     <React.Fragment>
@@ -80,7 +91,8 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
         activeOpacity={0.7}
         onPress={onPress}>
         <View style={styles.leftMenuWrapper}>
-          <Image source={require('../../../../assets/images/muffin.jpg')} style={styles.icon}/>
+          {/* <Image source={require('../../../../assets/images/muffin.jpg')} style={styles.icon}/> */}
+          {generateCategoryIcon()}
           <View style={styles.descriptionWrapper}>
             <CustomText
               color={ColorsEnum.DARK_GREEN}
