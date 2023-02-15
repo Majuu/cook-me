@@ -1,184 +1,16 @@
 {
   "recipes": [
     {
-      "id": 1,
-      "title": "Chocolate Muffin",
-      "category": "muffins",
-      "time": "00:30:00",
-      "isFavourite": false,
-      "ingredients": [
-        {
-          "name": "flour",
-          "amount": 500
-        },
-        {
-          "name": "eggs",
-          "amount": 3
-        },
-        {
-          "name": "milk",
-          "amount": 300
-        }
-      ],
-      "description": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "Something else"
-      ],
-      "authors": "Maju the MasterChef"
-    },
-    {
-      "id": 2,
-      "title": "Biscuits",
-      "category": "cookies",
-      "time": "00:30:00",
-      "isFavourite": true,
-      "ingredients": [
-        {
-          "name": "flour",
-          "amount": 500
-        },
-        {
-          "name": "eggs",
-          "amount": 3
-        },
-        {
-          "name": "milk",
-          "amount": 300
-        }
-      ],
-      "description": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      ],
-      "authors": "Maju the MasterChef"
-    },
-    {
-      "id": 3,
-      "title": "Cookies",
-      "category": "cookies",
-      "time": "00:30:00",
-      "isFavourite": false,
-      "ingredients": [
-        {
-          "name": "flour",
-          "amount": 500
-        },
-        {
-          "name": "eggs",
-          "amount": 3
-        },
-        {
-          "name": "milk",
-          "amount": 300
-        }
-      ],
-      "description": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      ],
-      "authors": "Maju the MasterChef"
-    },
-    {
-      "id": 4,
-      "title": "Apple Pie",
-      "category": "cakes",
-      "time": "00:30:00",
-      "isFavourite": false,
-      "ingredients": [
-        {
-          "name": "flour",
-          "amount": 500
-        },
-        {
-          "name": "eggs",
-          "amount": 3
-        },
-        {
-          "name": "milk",
-          "amount": 300
-        }
-      ],
-      "description": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      ],
-      "authors": "Maju the MasterChef"
-    },
-    {
-      "id": 5,
-      "title": "Cheesecake",
-      "category": "cakes",
-      "time": "00:30:00",
-      "isFavourite": false,
-      "ingredients": [
-        {
-          "name": "flour",
-          "amount": 500
-        },
-        {
-          "name": "eggs",
-          "amount": 3
-        },
-        {
-          "name": "milk",
-          "amount": 300
-        }
-      ],
-      "description": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      ],
-      "authors": "Maju the MasterChef"
-    },
-    {
-      "id": 6,
-      "title": "Pumpkin Pie",
-      "category": "cakes",
-      "time": "00:30:00",
-      "isFavourite": false,
-      "ingredients": [
-        {
-          "name": "flour",
-          "amount": 500
-        },
-        {
-          "name": "eggs",
-          "amount": 3
-        },
-        {
-          "name": "milk",
-          "amount": 300
-        }
-      ],
-      "description": [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      ],
-      "authors": "Maju the MasterChef"
-    },
-    {
-      "title": "Sd",
-      "category": "Dinner",
-      "time": "02:00:00",
-      "description": [
-        "Sds",
-        "Kjdhgfkjhdf"
-      ],
-      "authors": "Ds",
-      "isFavourite": false,
-      "ingredients": [
-        {
-          "name": "Eggs",
-          "amount": "ds",
-          "unit": "l"
-        }
-      ],
-      "id": 7
-    },
-    {
-      "title": "Omlet",
+      "title": "Omlette",
       "category": "Breakfast",
-      "time": "01:00:00",
+      "time": "00:20:00",
       "description": [
-        "Wszystko wymieszaj",
-        "Usmaż\n"
+        "Break the eggs, mix with a fork, adding water or milk, salt and pepper.",
+        "Put a dry frying pan on a very low heat, then increase the flame, heat the butter (be careful not to brown it), pour in the egg mixture.",
+        "Cook uncovered over high heat until the edges of the omelet are set. Turn over very gently, fry for a while.",
+        "Serve with extras."
       ],
-      "authors": "Arturek",
+      "authors": "Maju",
       "isFavourite": true,
       "ingredients": [
         {
@@ -187,12 +19,99 @@
           "unit": "-"
         },
         {
-          "name": "Flour",
-          "amount": "100",
+          "name": "Butter",
+          "amount": "30",
+          "unit": "g"
+        },
+        {
+          "name": "Milk",
+          "amount": "20",
+          "unit": "ml"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "title": "Cheesecake",
+      "category": "Desserts",
+      "time": "01:30:00",
+      "description": [
+        "Take the eggs and cheese out of the fridge an hour before making the filling so that they warm up slightly. The cheesecake comes out best when the ingredients are at room temperature.",
+        "Melt the butter in a saucepan over low heat, then cool. Cream the cottage cheese with eggs and sugar, then add the cooled butter and potato flour.",
+        "Mix to combine ingredients. Line a cake tin with a diameter of 22-24 cm with baking paper and pour the mixture into it.",
+        "Smooth the cheesecake on top and gently tap the baking sheet on the counter to get rid of air bubbles.",
+        "Put in the oven preheated to 180 degrees Celsius, bake for 30 minutes, then reduce the temperature to 150 degrees.",
+        "Bake for another 30 minutes, then turn off the oven (do not open it).",
+        "Leave the cake to cool in the oven. After 30 minutes, you can open the door slightly to get rid of the accumulated steam."
+      ],
+      "authors": "Bobby",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Cheese for cheesecake",
+          "amount": "1",
+          "unit": "kg"
+        },
+        {
+          "name": "Eggs",
+          "amount": "4",
+          "unit": "-"
+        },
+        {
+          "name": "Butter",
+          "amount": "200",
+          "unit": "g"
+        },
+        {
+          "name": "Potato flour",
+          "amount": "60",
+          "unit": "g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "125",
           "unit": "g"
         }
       ],
-      "id": 8
+      "id": 2
+    },
+    {
+      "title": "Pasta with corn in a creamy sauce",
+      "category": "Dinner",
+      "time": "01:00:00",
+      "description": [
+        "Boil water for pasta and cook according to package instructions.",
+        "Reserve 1 cup of cooking water, then drain the pasta.",
+        "Put 2 cups of corn in a blender along with the cheese and 3/4 cup of pasta cooking water and 1/4 tsp.",
+        "Blend into puree until very smooth. Stir the noodles into the mashed corn, adding a little of the noodle water, 1 tablespoon at a time, if the noodles seem dry.",
+        "Add the remaining corn, chopped shallots and basil.",
+        "Serve sprinkled with extra cheese and basil, and optional hot sauce."
+      ],
+      "authors": "Emma",
+      "isFavourite": true,
+      "ingredients": [
+        {
+          "name": "Corn",
+          "amount": "750",
+          "unit": "g"
+        },
+        {
+          "name": "Pasta",
+          "amount": "300",
+          "unit": "g"
+        },
+        {
+          "name": "Cheese",
+          "amount": "50",
+          "unit": "g"
+        },
+        {
+          "name": "Onion",
+          "amount": "125",
+          "unit": "g"
+        }
+      ],
+      "id": 3
     }
   ]
 }
