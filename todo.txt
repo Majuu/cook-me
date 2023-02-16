@@ -1,3 +1,0 @@
-- unit testing
-- tutorials tabs?
-- Back buttons in navigation
