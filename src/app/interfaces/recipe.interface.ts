@@ -15,5 +15,4 @@ export interface Recipe {
   authors: string;
   ingredients: Ingredient[];
   id?: number;
-  // image: string; //check?
 }

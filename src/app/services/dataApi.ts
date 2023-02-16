@@ -1,8 +1,9 @@
+import { Instruction } from "../interfaces/instructions.interface";
 import { Recipe } from "../interfaces/recipe.interface";
 
 // url works only if json server is live
-// const url = 'http://10.0.2.2:3000'; // android?
-const url = 'http://localhost:3000';
+// const url = 'http://10.0.2.2:3000'; // android
+const url = 'http://localhost:3000'; // ios
 
 export async function getAllRecipes(): Promise<Recipe[]> {
   const response = await fetch(`${url}/recipes`);
@@ -37,7 +38,6 @@ export async function getFavouriteRecipes(): Promise<Recipe[]> {
   }
 }
 
-// does thsi return void?
 export async function editRecipe(inputData: Recipe, id: number): Promise<void> {
   const response = await fetch(`${url}/recipes/${id}`, {
     method: 'PUT',
@@ -46,6 +46,15 @@ export async function editRecipe(inputData: Recipe, id: number): Promise<void> {
     },
     body: JSON.stringify(inputData)
   });
+  if (response.status < 400) {
+    return await response.json();
+  } else {
+    throw new Error(String(response.status));
+  }
+}
+
+export async function getAllInstructions(): Promise<Instruction[]> {
+  const response = await fetch(`${url}/instructions`);
   if (response.status < 400) {
     return await response.json();
   } else {

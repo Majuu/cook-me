@@ -11,7 +11,7 @@ import { ColorsEnum } from "../../enums/colors.enum";
 import { FontsEnum } from "../../enums/fonts.enum";
 import CustomText from "../shared/CustomText";
 import { Recipe } from '../../interfaces/recipe.interface';
-import { fetchAllRecipes, fetchFavouriteRecipes } from '../../store/reducers/recipeSlice';
+import { fetchAllRecipes, fetchFavouriteRecipes } from '../../store/reducers/recipesSlice';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { RootState } from '../../store/store';

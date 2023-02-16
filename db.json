@@ -690,5 +690,42 @@
       ],
       "id": 15
     }
+  ],
+  "instructions": [
+    {
+      "videoUrl": "wok",
+      "description": "How to cook on a wok",
+      "id": "i1"
+    },
+    {
+      "videoUrl": "chopping",
+      "description": "How to chop vegetables",
+      "id": "i2"
+    },
+    {
+      "videoUrl": "boiling-corn",
+      "description": "How to boil corn",
+      "id": "i3"
+    },
+    {
+      "videoUrl": "cutting-mango",
+      "description": "How to cut a mango",
+      "id": "i4"
+    },
+    {
+      "videoUrl": "meat-in-sauce",
+      "description": "How to cook meat in sauce",
+      "id": "i5"
+    },
+    {
+      "videoUrl": "preparing-meat-for-frying",
+      "description": "How to prepare the meat for frying",
+      "id": "i6"
+    },
+    {
+      "videoUrl": "sharpening-knife",
+      "description": "How to sharpen a knife",
+      "id": "i7"
+    }
   ]
 }

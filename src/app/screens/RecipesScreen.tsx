@@ -19,7 +19,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import { ScreensEnum } from '../enums/screens.enum';
 import { Recipe } from '../interfaces/recipe.interface';
 import { RootState } from '../store/store';
-import { fetchAllRecipes, fetchFavouriteRecipes } from '../store/reducers/recipeSlice';
+import { fetchAllRecipes, fetchFavouriteRecipes } from '../store/reducers/recipesSlice';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import RecipeListNavbar from '../components/RecipesList/RecipeListNavbar';
 import { RecipeCategories } from '../enums/recipe-categories.enum';
