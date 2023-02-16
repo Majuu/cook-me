@@ -33,15 +33,12 @@ const styles = StyleSheet.create({
     borderColor: ColorsEnum.GREEN,
     borderWidth: 2,
   },
-  leftMenuWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   descriptionWrapper: {
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
+    flexGrow: 1,
+    maxWidth: '60%'
   },
   icon: {
     width: 80,
@@ -90,7 +87,6 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
         style={styles.container}
         activeOpacity={0.7}
         onPress={onPress}>
-        <View style={styles.leftMenuWrapper}>
           {generateCategoryIcon()}
           <View style={styles.descriptionWrapper}>
             <CustomText
@@ -98,6 +94,7 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
               fontSize={titleFontSize}
               fontFamily={FontsEnum.SEN_BOLD}
               text={title}
+              numberOfLines={1}
             />
             <CustomText
               color={ColorsEnum.DARK_GREEN}
@@ -114,7 +111,6 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
                 color={ColorsEnum.DARK_GREEN}
               />
             </View>
-          </View>
         </View>
         {isFavourite ? 
         <TouchableOpacity onPress={changeIsFavourites}>
