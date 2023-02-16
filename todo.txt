@@ -1,4 +1,3 @@
 - unit testing
-- animations?
 - tutorials tabs?
-- replace db data with real data
+- Back buttons in navigation

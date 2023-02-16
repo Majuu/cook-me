@@ -112,6 +112,583 @@
         }
       ],
       "id": 3
+    },
+    {
+      "title": "Buckwheat with friut",
+      "category": "Breakfast",
+      "time": "00:30:00",
+      "description": [
+        "Rinse the buckwheat groats, put in a pot and cover with water.",
+        "Add salt and cook covered over low heat for about 15 minutes.",
+        "Pour the milk into the buckwheat groats and bring to a boil, stirring constantly so that the groats do not stick to the bottom of the pot.",
+        "Add honey and peanut butter. Mix.",
+        "Transfer to bowls. Arrange the berries on top."
+      ],
+      "authors": "Henry",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Buckwheat",
+          "amount": "130",
+          "unit": "g"
+        },
+        {
+          "name": "Water",
+          "amount": "150",
+          "unit": "ml"
+        },
+        {
+          "name": "Blueberry",
+          "amount": "130",
+          "unit": "g"
+        },
+        {
+          "name": "Honey",
+          "amount": "15",
+          "unit": "g"
+        },
+        {
+          "name": "Peanut butter",
+          "amount": "15",
+          "unit": "g"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "title": "Fish meatballs",
+      "category": "Dinner",
+      "time": "00:40:00",
+      "description": [
+        "Mince the fish and bread.",
+        "Add butter, milk, egg, parsley or dill. Mix. Form meatballs.",
+        "Wash the greens, peel, rinse and cut. Cover with water and cook with salt.",
+        "Put the meatballs into the boiling stock and cook for 20 minutes on low heat."
+      ],
+      "authors": "Henry",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Fish fillet",
+          "amount": "1",
+          "unit": "kg"
+        },
+        {
+          "name": "Carrot",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Celery",
+          "amount": "150",
+          "unit": "g"
+        },
+        {
+          "name": "Butter",
+          "amount": "5",
+          "unit": "g"
+        },
+        {
+          "name": "Egg",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Bun",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Milk",
+          "amount": "125",
+          "unit": "ml"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "title": "Croissants",
+      "category": "Desserts",
+      "time": "00:40:00",
+      "description": [
+        "Cut the margarine into smaller pieces and sift the flour and sugar with real vanilla on it. Chop with a knife.",
+        "Put the crushed yeast in a bowl and add 2 tablespoons of sugar. Use a spoon to rub vigorously into a paste.",
+        "Make a hollow in the flour with margarine, break the eggs into it, pour in the cream and add the yeast with sugar.",
+        "Make a uniform and smooth dough. Form a ball, wrap in a cloth and place in a bowl of cold water. It should cover the cake. Let the dough float to the surface.",
+        "Remove the dough from the water and unwrap it from the cloth. On a surface sprinkled with flour, form a roller and divide it into 5 equal parts.",
+        "Form balls from the rollers and then roll them into circles. If the dough is sticky, sprinkle the worktop with flour. Cut each cake into 8 triangles. Place 1 teaspoon of jam or jam in the center of each triangle on the wider side. Roll up from the wide end to form croissants. Glue the ends.",
+        "Place the croissants on a baking tray lined with baking paper, cover with a cloth and leave to rise for 15 minutes.",
+        "Bake in an oven preheated to 180 degrees C for about 30 minutes, until they start to brown. Remove and set aside to cool.",
+        "Serve sprinkled with powdered sugar, drizzled with icing or glaze."
+      ],
+      "authors": "Daisy",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Flour",
+          "amount": "500",
+          "unit": "g"
+        },
+        {
+          "name": "Margarine",
+          "amount": "250",
+          "unit": "g"
+        },
+        {
+          "name": "Sour cream",
+          "amount": "125",
+          "unit": "ml"
+        },
+        {
+          "name": "Yeast",
+          "amount": "40",
+          "unit": "g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "2",
+          "unit": "-"
+        },
+        {
+          "name": "Sugar",
+          "amount": "50",
+          "unit": "g"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "title": "Toasts with tomatoes and eggs",
+      "category": "Breakfast",
+      "time": "00:20:00",
+      "description": [
+        "Peel the sandwich bun, cut it into 1.5 cm thick slices (4 pcs.), lightly brown in a frying pan on both sides without fat or in a toaster.",
+        "Cut the smoked bacon into thicker slices (4 pieces) and fry without fat.",
+        "Push the bacon to the side of the pan and fry 4 slices of thickly chopped tomatoes on both sides.",
+        "Prepare the fried eggs separately.",
+        "Arrange the croutons on a platter and the tomatoes on top. For the tomatoes, bacon, and fried eggs on top, add salt and pepper.",
+        "Pour over all the hot sauce left over from frying the tomatoes combined with sour cream.",
+        "Garnish on a platter with green lettuce leaves. Serve hot as a snack."
+      ],
+      "authors": "Mike",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Buns",
+          "amount": "3",
+          "unit": "-"
+        },
+        {
+          "name": "Bacon",
+          "amount": "150",
+          "unit": "g"
+        },
+        {
+          "name": "Tomatoes",
+          "amount": "3",
+          "unit": "-"
+        },
+        {
+          "name": "Eggs",
+          "amount": "6",
+          "unit": "-"
+        },
+        {
+          "name": "Cream",
+          "amount": "80",
+          "unit": "g"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "title": "Spaghetti with meatballs",
+      "category": "Dinner",
+      "time": "01:30:00",
+      "description": [
+        "Soak the roll in a small amount of water, then squeeze the excess liquid and mix with the meat and egg.",
+        "Season the mass with salt, pepper and thyme, add half the Parmesan cheese and knead well. Form small balls.",
+        "Peel the onion, carrot and garlic. Chop the onion and garlic, grate the carrot on a coarse grater.",
+        "Heat the oil in a large frying pan or pot with a thick bottom and brown the meatballs on all sides.",
+        "Move the meat balls to the side of the pot or pan, put the vegetables on the free surface of the dish and fry for about 2 minutes.",
+        "Add the canned tomatoes and concentrate to the pot and mix gently. Add dry spaghetti and pour over boiling water.",
+        "Bring to a boil, reduce heat and cook covered for about 15 minutes. The pasta should be cooked by this time and the sauce should be thick.",
+        "Remove the pot from the heat and let it sit for a few minutes, then add the basil and the rest of the Parmesan cheese and mix. Serve right away."
+      ],
+      "authors": "Mike",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Spaghetti pasta",
+          "amount": "250",
+          "unit": "g"
+        },
+        {
+          "name": "Beef",
+          "amount": "250",
+          "unit": "g"
+        },
+        {
+          "name": "Buns",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Garlic",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Onion",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Carrot",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Tomatoes",
+          "amount": "300",
+          "unit": "g"
+        },
+        {
+          "name": "Boiling water",
+          "amount": "500",
+          "unit": "ml"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "title": "Bean Cookies",
+      "category": "Desserts",
+      "time": "00:30:00",
+      "description": [
+        "Transfer the beans to a strainer, rinse and set aside to drain.",
+        "Finely chop 50 g dark chocolate. Break the remaining chocolate into smaller pieces and melt in a water bath.",
+        "Put the beans in a bowl, break in the egg and add the sugar. Blend smooth.",
+        "Pour in melted chocolate, add cocoa and mix with a spoon.",
+        "Form balls from the mass with your hands, flatten them and place them on a baking tray lined with baking paper. Sprinkle the chopped chocolate on top of the cookies, pressing down lightly.",
+        "Put the tray into the oven preheated to 180 degrees C and bake for 15 minutes. Remove and set aside to cool.",
+        "Serve for dessert or as a sweet snack."
+      ],
+      "authors": "Tom",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Red beans",
+          "amount": "250",
+          "unit": "g"
+        },
+        {
+          "name": "Dark chocolate",
+          "amount": "150",
+          "unit": "g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "50",
+          "unit": "g"
+        },
+        {
+          "name": "Cocoa",
+          "amount": "20",
+          "unit": "g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "1",
+          "unit": "-"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "title": "Pancakes from the oven",
+      "category": "Breakfast",
+      "time": "00:40:00",
+      "description": [
+        "Transfer the curd to a bowl and mash it thoroughly with a fork. Beat the egg, add sugar and vanilla extract. Mix.",
+        "Pour in the flour and mix thoroughly. A smooth and thick dough should form. Set aside for 10 minutes.",
+        "With wet hands, form tangerine-sized balls from the dough, flatten them and place them on a baking sheet lined with baking paper.",
+        "Put in the oven preheated to 180 degrees C and bake for about 25 minutes, until they start to blush.",
+        "Remove, set aside to cool slightly and serve."
+      ],
+      "authors": "Jenny",
+      "isFavourite": true,
+      "ingredients": [
+        {
+          "name": "Semi-fat white cheese",
+          "amount": "500",
+          "unit": "g"
+        },
+        {
+          "name": "Wheat flour",
+          "amount": "80",
+          "unit": "g"
+        },
+        {
+          "name": "Sugar",
+          "amount": "40",
+          "unit": "g"
+        },
+        {
+          "name": "Vanilla extract",
+          "amount": "10",
+          "unit": "g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "1",
+          "unit": "-"
+        }
+      ],
+      "id": 10
+    },
+    {
+      "title": "Chicken in lemon pepper",
+      "category": "Dinner",
+      "time": "01:30:00",
+      "description": [
+        "Peel the lemon and then cut it into slices.",
+        "Put the flour, lemon pepper, salt and lemon zest in a bowl. Stir and add chicken breasts. Rub thoroughly.",
+        "Heat the olive oil in a large frying pan and fry the chicken on both sides until golden brown, 5 minutes each.",
+        "Pour in the broth and add the butter, the garlic squeezed through the press and the lemon slices. Bring to a boil, reduce the heat and cook for about 10 minutes until the sauce thickens.",
+        "Sprinkle with fresh herbs before serving."
+      ],
+      "authors": "Mark",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Chicken breast",
+          "amount": "500",
+          "unit": "g"
+        },
+        {
+          "name": "Wheat flour",
+          "amount": "120",
+          "unit": "g"
+        },
+        {
+          "name": "Chicken broth",
+          "amount": "120",
+          "unit": "ml"
+        },
+        {
+          "name": "Lemon",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Lemon pepper",
+          "amount": "10",
+          "unit": "g"
+        },
+        {
+          "name": "Butter",
+          "amount": "20",
+          "unit": "g"
+        },
+        {
+          "name": "Olive oil",
+          "amount": "20",
+          "unit": "g"
+        },
+        {
+          "name": "Garlic",
+          "amount": "20",
+          "unit": "g"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "title": "Sweet rhubarb and warn strawberry salad",
+      "category": "Desserts",
+      "time": "00:30:00",
+      "description": [
+        "Wash the rhubarb and cut it into small pieces. Put in a saucepan, sprinkle with sugar, pour orange juice.",
+        "Heat over medium heat, covered, until boiling, uncover, reduce gas and simmer 5 minutes.",
+        "Wash the strawberries, de-stalk them and cut them into halves or quarters. Add to rhubarb. Sauté together for about 5 minutes.",
+        "Toast the almonds in a dry pan.",
+        "Put the fruit into bowls, serve warm, sprinkled with almonds, with a dollop of heavy cream."
+      ],
+      "authors": "Clare",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Stalks of rhubarb",
+          "amount": "4",
+          "unit": "-"
+        },
+        {
+          "name": "Strawberries",
+          "amount": "200",
+          "unit": "g"
+        },
+        {
+          "name": "Powdered sugar",
+          "amount": "30",
+          "unit": "g"
+        },
+        {
+          "name": "Almond flakes",
+          "amount": "30",
+          "unit": "g"
+        },
+        {
+          "name": "Orange juice",
+          "amount": "130",
+          "unit": "ml"
+        },
+        {
+          "name": "Fondant cream",
+          "amount": "200",
+          "unit": "ml"
+        }
+      ],
+      "id": 12
+    },
+    {
+      "title": "Caluiflower omlette",
+      "category": "Breakfast",
+      "time": "00:15:00",
+      "description": [
+        "Peel cauliflower from leaves, wash and dry.",
+        "Grate on a large grater or chop into smaller pieces with a knife - I prefer the version with grated cauliflower.",
+        "Peel the onion, also grate it on a small-mesh grater.",
+        "Press the garlic through the press, chop the dill, add to the cauliflower.",
+        "Salt and add pepper to taste. Add whole eggs, mix, add flour, chopped greens and mix again. The mass should have the consistency of batter for potato pancakes.",
+        "Fry the omelette in hot fat, covered, over medium heat. When the bottom is browned, carefully flip to the other side using the lid. You can also pour the mass into a greased mold and bake in an oven preheated to 180ºC - but then you have to wait at least 20 minutes for the finished omelet.",
+        "Serve hot, although it also tastes good cold - when there is something left."
+      ],
+      "authors": "Jack",
+      "isFavourite": true,
+      "ingredients": [
+        {
+          "name": "Caluiflower",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Eggs",
+          "amount": "4",
+          "unit": "-"
+        },
+        {
+          "name": "Flour",
+          "amount": "15",
+          "unit": "g"
+        },
+        {
+          "name": "Onion",
+          "amount": "1",
+          "unit": "-"
+        },
+        {
+          "name": "Garlic",
+          "amount": "1",
+          "unit": "-"
+        }
+      ],
+      "id": 13
+    },
+    {
+      "title": "Chicken breasts in crispy coating",
+      "category": "Dinner",
+      "time": "00:45:00",
+      "description": [
+        "Mix panko with mozzarella and spices, add a splash of olive oil.",
+        "Wash the breasts and dry them thoroughly with a paper towel.",
+        "Cut into two thinner cutlets, season with salt and pepper.",
+        "Cover the baking tray with paper, grease with a little olive oil.",
+        "Arrange the pieces of meat on a baking sheet, cover them with a fairly thick layer of breadcrumbs.",
+        "Gently press the breadcrumbs to the meat with your hand, pressing it down slightly.",
+        "Bake in an oven preheated to 180 degrees C for about 20 minutes, until the breadcrumbs are golden."
+      ],
+      "authors": "Victoria",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Chicken breast",
+          "amount": "350",
+          "unit": "g"
+        },
+        {
+          "name": "Grated mozarella",
+          "amount": "120",
+          "unit": "g"
+        },
+        {
+          "name": "Panko",
+          "amount": "120",
+          "unit": "g"
+        },
+        {
+          "name": "Ground paprika",
+          "amount": "5",
+          "unit": "g"
+        },
+        {
+          "name": "Oregano",
+          "amount": "5",
+          "unit": "g"
+        }
+      ],
+      "id": 14
+    },
+    {
+      "title": "Cranberry soup with rapsberries",
+      "category": "Desserts",
+      "time": "00:30:00",
+      "description": [
+        "Cook washed, fresh cranberries in apple juice. Cook over low heat for about 10 minutes.",
+        "Blend or rub through a sieve, adding raspberries. Bring to the boil again, adding sugar, lemon juice and 1.5 cups cream.",
+        "Mix the rest of the cream with the potato flour, add to the soup and cook for another 5 minutes.",
+        "Serve cold or warm."
+      ],
+      "authors": "Anna",
+      "isFavourite": false,
+      "ingredients": [
+        {
+          "name": "Cranberries",
+          "amount": "1",
+          "unit": "kg"
+        },
+        {
+          "name": "Apple juice",
+          "amount": "1",
+          "unit": "l"
+        },
+        {
+          "name": "Rapsberries",
+          "amount": "500",
+          "unit": "g"
+        },
+        {
+          "name": "Lemon juice",
+          "amount": "15",
+          "unit": "ml"
+        },
+        {
+          "name": "Sugar",
+          "amount": "30",
+          "unit": "g"
+        },
+        {
+          "name": "Cinamon",
+          "amount": "5",
+          "unit": "g"
+        },
+        {
+          "name": "Cream",
+          "amount": "300",
+          "unit": "ml"
+        }
+      ],
+      "id": 15
     }
   ]
 }
