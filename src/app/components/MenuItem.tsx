@@ -21,22 +21,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: ColorsEnum.GREEN,
     margin: 10,
-    padding: 20
-  }
+    padding: 20,
+  },
 });
 
-const MenuItem: FunctionComponent<MenuItemProps> = ({ navigation, title, image, screenToNavigate }: MenuItemProps): React.ReactElement => {
+const MenuItem: FunctionComponent<MenuItemProps> = ({
+  navigation,
+  title,
+  image,
+  screenToNavigate,
+}: MenuItemProps): React.ReactElement => {
   const textFontSize = 33;
 
   const navigateToScreen = useCallback(() => {
     navigation.navigate(screenToNavigate);
-  }, []);
+  }, [navigation, screenToNavigate]);
 
   return (
     <TouchableOpacity style={styles.listItem} onPress={navigateToScreen}>
       <>
-      <CustomText text={title} fontSize={textFontSize} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
-      {image}
+        <CustomText
+          text={title}
+          fontSize={textFontSize}
+          fontFamily={FontsEnum.SEN_REGULAR}
+          color={ColorsEnum.DARK_GREEN}
+        />
+        {image}
       </>
     </TouchableOpacity>
   );

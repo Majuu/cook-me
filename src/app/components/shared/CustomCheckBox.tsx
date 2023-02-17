@@ -21,15 +21,32 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   checkbox: {
-    marginRight: 10
-  }
+    marginRight: 10,
+  },
 });
 
-const CustomCheckBox: FunctionComponent<CustomCheckBoxProps> = ({ text, value, onValueChange, style }) => {
+const CustomCheckBox: FunctionComponent<CustomCheckBoxProps> = ({
+  text,
+  value,
+  onValueChange,
+  style,
+}) => {
   return (
     <View style={{ ...styles.wrapper, ...style }}>
-      <CheckBox value={value} tintColor={ColorsEnum.GRAY} onTintColor={ColorsEnum.GREEN} onCheckColor={ColorsEnum.GREEN} onValueChange={onValueChange} style={styles.checkbox} />
-      <CustomText text={text} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
+      <CheckBox
+        value={value}
+        tintColor={ColorsEnum.GRAY}
+        onTintColor={ColorsEnum.GREEN}
+        onCheckColor={ColorsEnum.GREEN}
+        onValueChange={onValueChange}
+        style={styles.checkbox}
+      />
+      <CustomText
+        text={text}
+        fontSize={18}
+        fontFamily={FontsEnum.SEN_REGULAR}
+        color={ColorsEnum.DARK_GREEN}
+      />
     </View>
   );
 };

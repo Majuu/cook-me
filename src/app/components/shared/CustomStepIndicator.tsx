@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import StepIndicator, {  } from 'react-native-step-indicator';
+import StepIndicator from 'react-native-step-indicator';
 import { ColorsEnum } from '../../enums/colors.enum';
 import { FontsEnum } from '../../enums/fonts.enum';
 import { StyleSheet, View, Text } from 'react-native';
@@ -13,20 +13,20 @@ interface CustomStepIndicatorProps {
 
 const styles = StyleSheet.create({
   indicatorWrapper: {
-    marginBottom: 30
+    marginBottom: 30,
   },
   stepLabel: {
     fontSize: 15,
     textAlign: 'center',
     fontFamily: FontsEnum.SEN_REGULAR,
-    color: ColorsEnum.GRAY
+    color: ColorsEnum.GRAY,
   },
   stepLabelSelected: {
     fontSize: 15,
     textAlign: 'center',
     fontFamily: FontsEnum.SEN_EXTRABOLD,
-    color: ColorsEnum.DARK_GREEN
-  }
+    color: ColorsEnum.DARK_GREEN,
+  },
 });
 
 const stepIndicatorConfig: StepIndicatorStyles = {
@@ -52,26 +52,35 @@ const stepIndicatorConfig: StepIndicatorStyles = {
   labelSize: 15,
   currentStepLabelColor: ColorsEnum.DARK_GREEN,
   labelAlign: 'center',
-  labelFontFamily: FontsEnum.SEN_REGULAR
+  labelFontFamily: FontsEnum.SEN_REGULAR,
 };
 
 const renderLabel = ({
   position,
   label,
-  currentPosition
+  currentPosition,
 }: {
   position: number;
   stepStatus: string;
   label: string;
   currentPosition: number;
 }) => {
-  return <Text style={position === currentPosition ? styles.stepLabelSelected : styles.stepLabel}>{label}</Text>;
+  return (
+    <Text
+      style={
+        position === currentPosition
+          ? styles.stepLabelSelected
+          : styles.stepLabel
+      }>
+      {label}
+    </Text>
+  );
 };
 
 const CustomStepIndicator: FunctionComponent<CustomStepIndicatorProps> = ({
   currentPosition,
   labels,
-  style
+  style,
 }): React.ReactElement => {
   return (
     <View style={{ ...styles.indicatorWrapper, ...style }}>

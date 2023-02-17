@@ -12,14 +12,17 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
-import {ColorsEnum} from '../enums/colors.enum';
+import { useDispatch } from 'react-redux';
+import { ColorsEnum } from '../enums/colors.enum';
 import RecipesListItem from '../components/RecipesList/RecipeListItem';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { ScreensEnum } from '../enums/screens.enum';
 import { Recipe } from '../interfaces/recipe.interface';
 import { RootState } from '../store/store';
-import { fetchAllRecipes, fetchFavouriteRecipes } from '../store/reducers/recipesSlice';
+import {
+  fetchAllRecipes,
+  fetchFavouriteRecipes,
+} from '../store/reducers/recipesSlice';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import RecipeListNavbar from '../components/RecipesList/RecipeListNavbar';
 import { RecipeCategories } from '../enums/recipe-categories.enum';
@@ -35,33 +38,40 @@ const styles = StyleSheet.create({
   },
   itemList: {
     backgroundColor: ColorsEnum.GREEN,
-  }
+  },
 });
 
-const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
-}): React.ReactElement => {
+const RecipesScreen: FunctionComponent<
+  AllRecipesScreenProps
+> = ({}): React.ReactElement => {
   const route: Route = useRoute();
   const navigation: Route = useNavigation();
   const dispatch = useDispatch<ThunkDispatch<RootState, any, any>>();
-  const isAllRecipesScreen: boolean =
-    route.name === ScreensEnum.RECIPE_LIST;
+  const isAllRecipesScreen: boolean = route.name === ScreensEnum.RECIPE_LIST;
   const [searchItem, setSearchedItem] = useState('');
   const [searchedCategory, setSearchedCategory] = useState<RecipeCategories>();
-  const currentRecipes = useRecipeList(isAllRecipesScreen, searchedCategory, searchItem);
+  const currentRecipes = useRecipeList(
+    isAllRecipesScreen,
+    searchedCategory,
+    searchItem,
+  );
 
   useEffect(() => {
-    if(isAllRecipesScreen && !currentRecipes.length) {
-      dispatch(fetchAllRecipes())
+    if (isAllRecipesScreen && !currentRecipes.length) {
+      dispatch(fetchAllRecipes());
     }
 
-    if(!isAllRecipesScreen && !currentRecipes.length) {
+    if (!isAllRecipesScreen && !currentRecipes.length) {
       dispatch(fetchFavouriteRecipes());
     }
-  }, [])
+  }, [currentRecipes.length, dispatch, isAllRecipesScreen]);
 
-  const navigateToRecipeDetails = useCallback((item: any) => {
-    navigation.navigate(ScreensEnum.RECIPE_DETAILS, {recipe: item});
-  }, [navigation]);
+  const navigateToRecipeDetails = useCallback(
+    (item: any) => {
+      navigation.navigate(ScreensEnum.RECIPE_DETAILS, { recipe: item });
+    },
+    [navigation],
+  );
 
   return (
     <View style={styles.container}>
@@ -73,9 +83,7 @@ const RecipesScreen: FunctionComponent<AllRecipesScreenProps> = ({
       <FlatList
         style={styles.itemList}
         data={currentRecipes}
-        renderItem={(
-          recipe: ListRenderItemInfo<Recipe>,
-        ): ReactElement => (
+        renderItem={(recipe: ListRenderItemInfo<Recipe>): ReactElement => (
           <RecipesListItem
             item={recipe.item}
             key={recipe.item.id}

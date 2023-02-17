@@ -1,7 +1,7 @@
-import {StyleSheet, TextInput, View} from 'react-native';
-import React, {ChangeEvent, FunctionComponent, useMemo} from 'react';
-import {ColorsEnum} from '../../enums/colors.enum';
-import {FontsEnum} from '../../enums/fonts.enum';
+import { StyleSheet, TextInput, View } from 'react-native';
+import React, { ChangeEvent, FunctionComponent, useMemo } from 'react';
+import { ColorsEnum } from '../../enums/colors.enum';
+import { FontsEnum } from '../../enums/fonts.enum';
 import SearchIcon from '../../../../assets/images/search.svg';
 
 interface CustomInputProps {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     fontFamily: FontsEnum.SEN_REGULAR,
     color: ColorsEnum.DARK_GREEN,
-    height: 46
+    height: 46,
   },
   multilineInput: {
     height: 'auto',
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: ColorsEnum.GREEN,
     borderRadius: 15,
-    height: 46
+    height: 46,
   },
   searchIcon: {
     marginLeft: 10,
@@ -65,22 +65,22 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
   isSearchBar = false,
   numberedInput = false,
   style,
-  deepInputStyles
+  deepInputStyles,
 }): React.ReactElement => {
   const containerStyles = useMemo(() => {
     if (isSearchBar) {
-      return {...styles.searchInputContainer, ...style};
+      return { ...styles.searchInputContainer, ...style };
     } else {
-      return {...styles.container, ...style};
+      return { ...styles.container, ...style };
     }
   }, [isSearchBar, style]);
 
   const inputStyles = useMemo(() => {
     if (multiline && !isSearchBar) {
-      return {...styles.input, ...styles.multilineInput};
+      return { ...styles.input, ...styles.multilineInput };
     }
     if (!multiline && isSearchBar) {
-      return {...styles.input, ...styles.searchInput};
+      return { ...styles.input, ...styles.searchInput };
     } else {
       return styles.input;
     }
@@ -88,8 +88,9 @@ const CustomInput: FunctionComponent<CustomInputProps> = ({
 
   return (
     <View style={containerStyles}>
-      {isSearchBar && <SearchIcon width={15} height={15} style={styles.searchIcon} />
-      }
+      {isSearchBar && (
+        <SearchIcon width={15} height={15} style={styles.searchIcon} />
+      )}
       <TextInput
         multiline={multiline}
         numberOfLines={multiline ? 10 : 1}

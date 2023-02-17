@@ -15,8 +15,8 @@ interface CustomTextPropsInterface {
 
 const styles = StyleSheet.create({
   textCentered: {
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 const CustomText: FunctionComponent<CustomTextPropsInterface> = ({
@@ -26,18 +26,25 @@ const CustomText: FunctionComponent<CustomTextPropsInterface> = ({
   fontSize,
   numberOfLines,
   style,
-  textAlignPosition = 'center'
+  textAlignPosition = 'center',
 }): React.ReactElement => {
   const propsStyles = StyleSheet.create({
     textStyling: {
       fontSize: fontSize,
       fontFamily: fontFamily,
-      color: color
-    }
+      color: color,
+    },
   });
   return (
     <View style={style}>
-      <Text numberOfLines={numberOfLines} style={[propsStyles.textStyling, textAlignPosition === 'center' && styles.textCentered]}>{text}</Text>
+      <Text
+        numberOfLines={numberOfLines}
+        style={[
+          propsStyles.textStyling,
+          textAlignPosition === 'center' && styles.textCentered,
+        ]}>
+        {text}
+      </Text>
     </View>
   );
 };

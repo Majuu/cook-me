@@ -1,6 +1,6 @@
-import React, {FunctionComponent} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {ColorsEnum} from '../../enums/colors.enum';
+import React, { FunctionComponent } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ColorsEnum } from '../../enums/colors.enum';
 
 interface ButtonPropsInterface {
   text: string;
@@ -22,17 +22,20 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   disabled: {
-    opacity: 0.4
-  }
+    opacity: 0.4,
+  },
 });
 
 const CustomButton: FunctionComponent<ButtonPropsInterface> = ({
   text,
   onPress,
   style,
-  disabled
+  disabled,
 }: ButtonPropsInterface): React.ReactElement => (
-  <TouchableOpacity style={[styles.container, style, disabled && styles.disabled]} onPress={onPress} disabled={disabled}>
+  <TouchableOpacity
+    style={[styles.container, style, disabled && styles.disabled]}
+    onPress={onPress}
+    disabled={disabled}>
     <View>
       <Text
         style={{

@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
     backgroundColor: ColorsEnum.LIGHT_GREEN,
     borderBottomColor: ColorsEnum.GREEN,
     borderBottomWidth: 2,
-    height: 135
+    height: 135,
   },
   inputDimension: {
-    width: '48%'
+    width: '48%',
   },
   contentWrapper: {
     width: '100%',
@@ -35,22 +35,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
-    marginTop: 5
+    marginTop: 5,
   },
   header: {
-    marginTop: 20
-  }
+    marginTop: 20,
+  },
 });
 
 const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
   setSearchItem,
   setSearchCategory,
-  searchItem
+  searchItem,
 }: RecipeListNavbarProps) => {
   const route = useRoute();
   const { title, myRecipesTitle } = textPlaceholders.allRecipes;
-  const isFavouriteRecipesScreen: boolean = route.name === ScreensEnum.MY_RECIPES;
-  const recipeCategories: RecipeCategories[] = [RecipeCategories.BREAKFAST, RecipeCategories.DINNER, RecipeCategories.DESSERT, RecipeCategories.NONE];
+  const isFavouriteRecipesScreen: boolean =
+    route.name === ScreensEnum.MY_RECIPES;
+  const recipeCategories: RecipeCategories[] = [
+    RecipeCategories.BREAKFAST,
+    RecipeCategories.DINNER,
+    RecipeCategories.DESSERT,
+    RecipeCategories.NONE,
+  ];
 
   return (
     <View style={styles.container}>
@@ -62,8 +68,19 @@ const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
         color={ColorsEnum.DARK_GREEN}
       />
       <View style={styles.contentWrapper}>
-        <CustomInput placeholder={'Search'} onChange={setSearchItem} value={searchItem} isSearchBar={true} style={styles.inputDimension} />
-        <CustomPicker placeholder={'Filter by...'} style={styles.inputDimension} list={recipeCategories} onChange={setSearchCategory} />
+        <CustomInput
+          placeholder={'Search'}
+          onChange={setSearchItem}
+          value={searchItem}
+          isSearchBar={true}
+          style={styles.inputDimension}
+        />
+        <CustomPicker
+          placeholder={'Filter by...'}
+          style={styles.inputDimension}
+          list={recipeCategories}
+          onChange={setSearchCategory}
+        />
       </View>
     </View>
   );

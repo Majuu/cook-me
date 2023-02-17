@@ -5,9 +5,9 @@ import instructionsReducer from './reducers/instructionsSlice';
 export const store = configureStore({
   reducer: {
     recipes: recipesReducer,
-    instructions: instructionsReducer
-  }
-})
+    instructions: instructionsReducer,
+  },
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

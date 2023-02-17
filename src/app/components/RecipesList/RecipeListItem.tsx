@@ -4,14 +4,17 @@ import NotFavouriteIcon from '../../../../assets/images/app-interaction-icons/no
 import BreakfastIcon from '../../../../assets/images/recipe-categories-icons/breakfast.svg';
 import DinnerIcon from '../../../../assets/images/recipe-categories-icons/dinner.svg';
 import DessertIcon from '../../../../assets/images/recipe-categories-icons/dessert.svg';
-import {editRecipe} from '../../services/dataApi';
-import React, { FunctionComponent, useCallback, useMemo } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { ColorsEnum } from "../../enums/colors.enum";
-import { FontsEnum } from "../../enums/fonts.enum";
-import CustomText from "../shared/CustomText";
+import { editRecipe } from '../../services/dataApi';
+import React, { FunctionComponent, useCallback, useMemo } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ColorsEnum } from '../../enums/colors.enum';
+import { FontsEnum } from '../../enums/fonts.enum';
+import CustomText from '../shared/CustomText';
 import { Recipe } from '../../interfaces/recipe.interface';
-import { fetchAllRecipes, fetchFavouriteRecipes } from '../../store/reducers/recipesSlice';
+import {
+  fetchAllRecipes,
+  fetchFavouriteRecipes,
+} from '../../store/reducers/recipesSlice';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { RootState } from '../../store/store';
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     flexGrow: 1,
-    maxWidth: '60%'
+    maxWidth: '60%',
   },
   icon: {
     width: 80,
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
   },
   clock: {
     marginRight: 5,
-  }
+  },
 });
 
 const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
@@ -62,24 +65,54 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
   const titleFontSize: number = 23;
   const subtitleFontSize: number = 17;
   const timeSize: number = 15;
-  const {title, category, time, isFavourite, id} = item;
+  const { title, category, time, isFavourite, id } = item;
   const dispatch = useDispatch<ThunkDispatch<RootState, any, any>>();
-  const categoryIconsDimentions = useMemo(() => 70, [])
+  const categoryIconsDimentions = useMemo(() => 70, []);
 
   const changeIsFavourites = useCallback(async () => {
     await editRecipe({ ...item, isFavourite: !isFavourite }, id as number);
     dispatch(fetchAllRecipes());
     dispatch(fetchFavouriteRecipes());
-  }, [item, isFavourite, id]);
+  }, [item, isFavourite, id, dispatch]);
 
-  const breakfast = useMemo(() => <BreakfastIcon height={categoryIconsDimentions} width={categoryIconsDimentions} style={styles.icon} />, []);
-  const dinner = useMemo(() => <DinnerIcon height={categoryIconsDimentions} width={categoryIconsDimentions} style={styles.icon} />, []);
-  const dessert = useMemo(() => <DessertIcon height={categoryIconsDimentions} width={categoryIconsDimentions} style={styles.icon} />, []);
+  const breakfast = useMemo(
+    () => (
+      <BreakfastIcon
+        height={categoryIconsDimentions}
+        width={categoryIconsDimentions}
+        style={styles.icon}
+      />
+    ),
+    [categoryIconsDimentions],
+  );
+  const dinner = useMemo(
+    () => (
+      <DinnerIcon
+        height={categoryIconsDimentions}
+        width={categoryIconsDimentions}
+        style={styles.icon}
+      />
+    ),
+    [categoryIconsDimentions],
+  );
+  const dessert = useMemo(
+    () => (
+      <DessertIcon
+        height={categoryIconsDimentions}
+        width={categoryIconsDimentions}
+        style={styles.icon}
+      />
+    ),
+    [categoryIconsDimentions],
+  );
 
   const generateCategoryIcon = useCallback(() => {
-    return category === RecipeCategories.BREAKFAST ? breakfast : 
-    category === RecipeCategories.DINNER ? dinner : dessert
-  }, [])
+    return category === RecipeCategories.BREAKFAST
+      ? breakfast
+      : category === RecipeCategories.DINNER
+      ? dinner
+      : dessert;
+  }, [breakfast, dinner, dessert, category]);
 
   return (
     <React.Fragment>
@@ -87,39 +120,40 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
         style={styles.container}
         activeOpacity={0.7}
         onPress={onPress}>
-          {generateCategoryIcon()}
-          <View style={styles.descriptionWrapper}>
+        {generateCategoryIcon()}
+        <View style={styles.descriptionWrapper}>
+          <CustomText
+            color={ColorsEnum.DARK_GREEN}
+            fontSize={titleFontSize}
+            fontFamily={FontsEnum.SEN_REGULAR}
+            text={title}
+            numberOfLines={1}
+          />
+          <CustomText
+            color={ColorsEnum.DARK_GREEN}
+            fontSize={subtitleFontSize}
+            fontFamily={FontsEnum.SEN_REGULAR}
+            text={category}
+          />
+          <View style={styles.timeWrapper}>
+            <Timer height={timeSize} width={timeSize} style={styles.clock} />
             <CustomText
-              color={ColorsEnum.DARK_GREEN}
-              fontSize={titleFontSize}
+              text={time}
+              fontSize={timeSize}
               fontFamily={FontsEnum.SEN_REGULAR}
-              text={title}
-              numberOfLines={1}
-            />
-            <CustomText
               color={ColorsEnum.DARK_GREEN}
-              fontSize={subtitleFontSize}
-              fontFamily={FontsEnum.SEN_REGULAR}
-              text={category}
             />
-            <View style={styles.timeWrapper}>
-              <Timer height={timeSize} width={timeSize} style={styles.clock} />
-              <CustomText
-                text={time}
-                fontSize={timeSize}
-                fontFamily={FontsEnum.SEN_REGULAR}
-                color={ColorsEnum.DARK_GREEN}
-              />
-            </View>
+          </View>
         </View>
-        {isFavourite ? 
-        <TouchableOpacity onPress={changeIsFavourites}>
-          <FavouriteIcon height={30} width={30}  />
-        </TouchableOpacity>
+        {isFavourite ?
+          <TouchableOpacity onPress={changeIsFavourites}>
+            <FavouriteIcon height={30} width={30} />
+          </TouchableOpacity>
         :
-        <TouchableOpacity onPress={changeIsFavourites}>
-          <NotFavouriteIcon height={30} width={30} />
-        </TouchableOpacity>}
+          <TouchableOpacity onPress={changeIsFavourites}>
+            <NotFavouriteIcon height={30} width={30} />
+          </TouchableOpacity>
+        }
       </TouchableOpacity>
     </React.Fragment>
   );

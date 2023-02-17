@@ -1,13 +1,13 @@
-import React, {FunctionComponent} from 'react';
-import {FlatList, Route, StyleSheet, View} from 'react-native';
-import {textPlaceholders} from '../consts/text-placeholders.const';
+import React, { FunctionComponent } from 'react';
+import { FlatList, Route, StyleSheet, View } from 'react-native';
+import { textPlaceholders } from '../consts/text-placeholders.const';
 import Learn from '../../../assets/images/mold.svg';
 import Menu from '../../../assets/images/menu.svg';
 import Chef from '../../../assets/images/chef.svg';
 import Cooking from '../../../assets/images/cooking.svg';
-import {ScreensEnum} from '../enums/screens.enum';
+import { ScreensEnum } from '../enums/screens.enum';
 import MenuItem from '../components/MenuItem';
-import {ColorsEnum} from '../enums/colors.enum';
+import { ColorsEnum } from '../enums/colors.enum';
 
 interface MenuItemListInterface {
   id: string;
@@ -36,7 +36,7 @@ const MenuScreen: FunctionComponent<MenuScreenProps> = ({
       id: 'learn',
       title: textPlaceholders.menuScreen.learn,
       image: <Learn width={'20%'} height={'150%'} />,
-      screenToNavigate: ScreensEnum.LEARN_BASICS
+      screenToNavigate: ScreensEnum.LEARN_BASICS,
     },
     {
       id: 'list',
@@ -55,27 +55,27 @@ const MenuScreen: FunctionComponent<MenuScreenProps> = ({
       title: textPlaceholders.menuScreen.addRecipe,
       image: <Cooking width={'20%'} height={'150%'} />,
       screenToNavigate: ScreensEnum.ADD_RECIPE,
-    }
+    },
   ];
 
   return (
-      <View style={styles.container}>
-        <View>
-          <FlatList
-            data={data}
-            scrollEnabled={false}
-            renderItem={({item}): React.ReactElement => (
-              <MenuItem
-                screenToNavigate={item.screenToNavigate}
-                title={item.title}
-                image={item.image}
-                navigation={navigation}
-              />
-            )}
-            keyExtractor={(item: MenuItemListInterface): string => item.id}
-          />
-        </View>
+    <View style={styles.container}>
+      <View>
+        <FlatList
+          data={data}
+          scrollEnabled={false}
+          renderItem={({ item }): React.ReactElement => (
+            <MenuItem
+              screenToNavigate={item.screenToNavigate}
+              title={item.title}
+              image={item.image}
+              navigation={navigation}
+            />
+          )}
+          keyExtractor={(item: MenuItemListInterface): string => item.id}
+        />
       </View>
+    </View>
   );
 };
 

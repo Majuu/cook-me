@@ -1,4 +1,4 @@
-import { IngredientUnit } from "../enums/ingredient-units.enum";
+import { IngredientUnit } from '../enums/ingredient-units.enum';
 
 export interface Ingredient {
   name: string;
