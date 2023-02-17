@@ -16,6 +16,7 @@ It was one of my 2023 goals to improve and finish the abandoned application from
 ## About the project itself
 The project is a quite simple coooking book with predefined recipes. The user can search for a recipe (manually by scrolling / with search input / with category filtering), read the recipe details, add a recipe to the list of favourites and add his custom recipe.
 The project also includes 'Learn the basics' tab which consists of sample videos of basic kitchen activities for learning purposes.
+The project works both on IOS and Android.
 
 ## Demo
 
