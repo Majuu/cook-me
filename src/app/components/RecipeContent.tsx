@@ -92,20 +92,20 @@ const RecipeContent: FunctionComponent<RecipeContentProps> = ({ recipe, labels, 
               <CustomText
                 text={capitalize(item.name)}
                 fontSize={22}
-                fontFamily={FontsEnum.SEN_BOLD}
+                fontFamily={FontsEnum.SEN_REGULAR}
                 color={ColorsEnum.DARK_GREEN}
               />
               <View style={styles.ingredientWithUnitContainer}>
               <CustomText
                 text={capitalize(item.amount.toString())}
                 fontSize={22}
-                fontFamily={FontsEnum.SEN_BOLD}
+                fontFamily={FontsEnum.SEN_REGULAR}
                 color={ColorsEnum.DARK_GREEN}
               />
                 {(item.unit && item.unit !== IngredientUnit.NO_UNIT) && <CustomText
                 text={item.unit}
                 fontSize={22}
-                fontFamily={FontsEnum.SEN_BOLD}
+                fontFamily={FontsEnum.SEN_REGULAR}
                 color={ColorsEnum.DARK_GREEN}
               />}
               </View>
@@ -133,7 +133,7 @@ const RecipeContent: FunctionComponent<RecipeContentProps> = ({ recipe, labels, 
 
   return (
     <View style={styles.container}>
-          <CustomText text={labels[currentStep]} fontSize={30} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} />
+          <CustomText text={labels[currentStep]} fontSize={30} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
           <View style={styles.sectionWrapper}>
             {currentStep === 0 && introContent}
             {currentStep === 1 && ingredientsContent}

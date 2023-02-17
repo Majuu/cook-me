@@ -92,7 +92,7 @@ const RecipesListItem: FunctionComponent<RecipeListItemProps> = ({
             <CustomText
               color={ColorsEnum.DARK_GREEN}
               fontSize={titleFontSize}
-              fontFamily={FontsEnum.SEN_BOLD}
+              fontFamily={FontsEnum.SEN_REGULAR}
               text={title}
               numberOfLines={1}
             />

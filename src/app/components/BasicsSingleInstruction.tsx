@@ -49,7 +49,7 @@ const BasicsSingleInstruction: FunctionComponent<BasicsSingleInstructionProps> =
 
     return (
         <View style={styles.container}>
-            <CustomText style={styles.description} text={description} fontSize={17} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} />
+            <CustomText style={styles.description} text={description} fontSize={17} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
             <Video style={styles.video} source={dummyGenerateVideoSource()} paused={true} controls={true} />
         </View>
     );

@@ -38,7 +38,6 @@ const CustomButton: FunctionComponent<ButtonPropsInterface> = ({
         style={{
           color: ColorsEnum.DARK_GREEN,
           fontSize: 20,
-          // fontFamily: 'Sen-Bold',
           letterSpacing: -0.5,
         }}>
         {text}

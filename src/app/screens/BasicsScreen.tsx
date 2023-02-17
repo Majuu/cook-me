@@ -34,8 +34,8 @@ const BasicsScreen: FunctionComponent = (): React.ReactElement => {
 
   return (
     <View style={styles.container}>
-      <CustomText text={'Learn the basics'} fontSize={40} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} style={styles.title} />
-      <CustomText text={'Take a look how to cook daily in the kitchen with the most basic video instructions. Practise and become better!'} fontSize={16} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} style={styles.title} />
+      <CustomText text={'Learn the basics'} fontSize={40} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} style={styles.title} />
+      <CustomText text={'Take a look how to cook daily in the kitchen with the most basic video instructions. Practise and become better!'} fontSize={16} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} style={styles.title} />
       <FlatList
         data={instructionsList}
         scrollEnabled={true}

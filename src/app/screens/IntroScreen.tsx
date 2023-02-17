@@ -46,7 +46,7 @@ const IntroScreen: FunctionComponent<IntroScreenProps> = ({
           <CustomText
             style={styles.header}
             text={textPlaceholders.introScreen.welcomeToMyPastry}
-            fontFamily={FontsEnum.SEN_BOLD}
+            fontFamily={FontsEnum.SEN_REGULAR}
             fontSize={35}
             color={ColorsEnum.DARK_GREEN}
           />

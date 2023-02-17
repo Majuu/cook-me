@@ -63,7 +63,6 @@ const initialFormValues: Recipe = {
   ingredients: []
 };
 
-//ToDo add image later
 const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
   const [isAddedToFavourites, setIsAddedToFavourites] = useState<boolean>(false);
   const [time, setTime] = useState<string>('00:00:00');
@@ -77,13 +76,11 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
     setIsAddedToFavourites(!isAddedToFavourites);
   }, [isAddedToFavourites, setIsAddedToFavourites]);
 
-  //ToDo add error handling
   const addNewRecipe = async (recipeItems: Recipe): Promise<void> => {
     try {
       await addRecipe(recipeItems);
       navigation.navigate(ScreensEnum.MENU);
     } catch (e) {
-      //ToDo fireup the error message
       console.log(e);
     }
   };
@@ -124,7 +121,7 @@ const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
 
   return (
     <View style={styles.wrapper}>
-        <CustomText text={'Add recipe'} fontSize={40} fontFamily={FontsEnum.SEN_BOLD} color={ColorsEnum.DARK_GREEN} style={styles.title} />
+        <CustomText text={'Add recipe'} fontSize={40} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} style={styles.title} />
         <CustomStepIndicator style={styles.stepIndicator} currentPosition={currentPosition} labels={labels} />
 
         <Formik

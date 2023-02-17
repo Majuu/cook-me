@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   stepLabel: {
     fontSize: 15,
     textAlign: 'center',
-    fontFamily: FontsEnum.SEN_BOLD,
+    fontFamily: FontsEnum.SEN_REGULAR,
     color: ColorsEnum.GRAY
   },
   stepLabelSelected: {
@@ -52,7 +52,7 @@ const stepIndicatorConfig: StepIndicatorStyles = {
   labelSize: 15,
   currentStepLabelColor: ColorsEnum.DARK_GREEN,
   labelAlign: 'center',
-  labelFontFamily: FontsEnum.SEN_BOLD
+  labelFontFamily: FontsEnum.SEN_REGULAR
 };
 
 const renderLabel = ({

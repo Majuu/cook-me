@@ -58,7 +58,7 @@ const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
         style={styles.header}
         text={isFavouriteRecipesScreen ? myRecipesTitle : title}
         fontSize={32}
-        fontFamily={FontsEnum.SEN_BOLD}
+        fontFamily={FontsEnum.SEN_REGULAR}
         color={ColorsEnum.DARK_GREEN}
       />
       <View style={styles.contentWrapper}>
