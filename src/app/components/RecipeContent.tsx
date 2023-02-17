@@ -1,16 +1,15 @@
 import React, { FunctionComponent } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import CustomText from './shared/CustomText';
 import { FontsEnum } from '../enums/fonts.enum';
 import { ColorsEnum } from '../enums/colors.enum';
 import { capitalize } from 'lodash';
 import { Recipe } from '../interfaces/recipe.interface';
-import { ScrollView } from 'react-native-gesture-handler';
 import { IngredientUnit } from '../enums/ingredient-units.enum';
 
 interface RecipeContentProps {
   recipe: Recipe;
-  labels: Array<string>; // enums
+  labels: Array<string>;
   currentStep: number;
 }
 
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   },
   contentContainer: {
-    flexGrow: 1
+    height: 450
   },
   introContentContainer: {
     display: 'flex',
@@ -84,45 +83,53 @@ const RecipeContent: FunctionComponent<RecipeContentProps> = ({ recipe, labels, 
         color={ColorsEnum.DARK_GREEN}
         style={styles.ingredientsHeader}
       />
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        {ingredients.map((ingredient) => (
-          <View key={ingredient.name} style={styles.ingredientWrapper}>
-                <CustomText
-                  text={capitalize(ingredient.name)}
-                  fontSize={22}
-                  fontFamily={FontsEnum.SEN_BOLD}
-                  color={ColorsEnum.DARK_GREEN}
-                />
-                <View style={styles.ingredientWithUnitContainer}>
-                <CustomText
-                  text={capitalize(ingredient.amount.toString())}
-                  fontSize={22}
-                  fontFamily={FontsEnum.SEN_BOLD}
-                  color={ColorsEnum.DARK_GREEN}
-                />
-                 {(ingredient.unit && ingredient.unit !== IngredientUnit.NO_UNIT) && <CustomText
-                  text={ingredient.unit}
-                  fontSize={22}
-                  fontFamily={FontsEnum.SEN_BOLD}
-                  color={ColorsEnum.DARK_GREEN}
-                />}
-                </View>
-          </View>
-        ))}
-        </ScrollView>
+      <FlatList
+        data={ingredients}
+        scrollEnabled={true}
+        showsVerticalScrollIndicator={false}
+        renderItem={({item, index}): React.ReactElement => (
+          <View key={item.name} style={styles.ingredientWrapper}>
+              <CustomText
+                text={capitalize(item.name)}
+                fontSize={22}
+                fontFamily={FontsEnum.SEN_BOLD}
+                color={ColorsEnum.DARK_GREEN}
+              />
+              <View style={styles.ingredientWithUnitContainer}>
+              <CustomText
+                text={capitalize(item.amount.toString())}
+                fontSize={22}
+                fontFamily={FontsEnum.SEN_BOLD}
+                color={ColorsEnum.DARK_GREEN}
+              />
+                {(item.unit && item.unit !== IngredientUnit.NO_UNIT) && <CustomText
+                text={item.unit}
+                fontSize={22}
+                fontFamily={FontsEnum.SEN_BOLD}
+                color={ColorsEnum.DARK_GREEN}
+              />}
+              </View>
+        </View>          )}
+        keyExtractor={(_item, index): string => index.toString()}
+        ListEmptyComponent={<CustomText fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} fontSize={15} text='There are no ingredients yet' />}
+      />
     </View>
 
-  const descriptionContent = <>
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-    {description.map((descriptionStep, i) =>
-      {return ( 
-      <View key={i} style={styles.singleDescriptionContentContainer}>
-        <CustomText text={(`${i+1}. `).toString()} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
-        <CustomText style={styles.descriptionInnercontainer} textAlignPosition={'left'} text={descriptionStep} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
-      </View>)}
-    )}
-    </ScrollView>
-  </>
+  const descriptionContent =
+    <View style={styles.contentContainer}>
+      <FlatList
+        data={description}
+        showsVerticalScrollIndicator={false}
+        scrollEnabled={true}
+        renderItem={({item, index}): React.ReactElement => (
+          <View key={index} style={styles.singleDescriptionContentContainer}>
+          <CustomText text={(`${index+1}. `).toString()} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
+          <CustomText style={styles.descriptionInnercontainer} textAlignPosition={'left'} text={item} fontSize={18} fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} />
+        </View>      )}
+        keyExtractor={(_item, index): string => index.toString()}
+        ListEmptyComponent={<CustomText fontFamily={FontsEnum.SEN_REGULAR} color={ColorsEnum.DARK_GREEN} fontSize={15} text='There are no ingredients yet' />}
+      />
+    </View>
 
   return (
     <View style={styles.container}>
