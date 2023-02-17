@@ -39,6 +39,7 @@ const BasicsScreen: FunctionComponent = (): React.ReactElement => {
       <FlatList
         data={instructionsList}
         scrollEnabled={true}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}): React.ReactElement => (
           <BasicsSingleInstruction instructionItem={{videoUrl: item.videoUrl, description: item.description}} />
           )}
