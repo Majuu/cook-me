@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement, useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Video from 'react-native-video';
 import { ColorsEnum } from '../enums/colors.enum';
@@ -31,7 +31,7 @@ const BasicsSingleInstruction: FunctionComponent<
   const { description, videoUrl } = instructionItem;
 
   // A dummy function to properly load different videos (react-native-video crashes the app if the video uri is passed dynamically)
-  const dummyGenerateVideoSource = (): any => {
+  const dummyGenerateVideoSource = useCallback(() => {
     if (videoUrl.includes('wok')) {
       return require('../../../assets/videos/wok.mp4');
     } else if (videoUrl.includes('corn')) {
@@ -47,7 +47,7 @@ const BasicsSingleInstruction: FunctionComponent<
     } else if (videoUrl.includes('knife')) {
       return require('../../../assets/videos/knife.mp4');
     }
-  };
+  }, [videoUrl]);
 
   return (
     <View style={styles.container}>

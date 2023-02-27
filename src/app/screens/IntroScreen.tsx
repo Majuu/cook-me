@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { Route, StyleSheet, View } from 'react-native';
 import CustomButton from '../components/shared/CustomButton';
 import CustomText from '../components/shared/CustomText';
@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
 const IntroScreen: FunctionComponent<IntroScreenProps> = ({
   navigation,
 }: IntroScreenProps): React.ReactElement => {
-  const navigateToMenuAndRemoveFromStack = () => {
+  const navigateToMenuAndRemoveFromStack = useCallback(() => {
     navigation.dispatch(StackActions.replace(ScreensEnum.MENU));
-  };
+  }, [navigation, ScreensEnum]);
 
   return (
     <View style={styles.container}>

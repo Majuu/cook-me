@@ -118,7 +118,7 @@ const RecipeContent: FunctionComponent<RecipeContentProps> = ({
         data={ingredients}
         scrollEnabled={true}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item, index }): React.ReactElement => (
+        renderItem={({ item }): React.ReactElement => (
           <View key={item.name} style={styles.ingredientWrapper}>
             <CustomText
               text={capitalize(item.name)}

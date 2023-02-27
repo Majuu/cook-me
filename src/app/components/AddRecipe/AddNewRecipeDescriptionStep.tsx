@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import CustomButton from '../shared/CustomButton';
 import CustomInput from '../shared/CustomInput';

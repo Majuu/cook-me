@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { FlatList, Route, StyleSheet, View } from 'react-native';
 import { textPlaceholders } from '../consts/text-placeholders.const';
 import Learn from '../../../assets/images/mold.svg';
@@ -31,32 +31,35 @@ const styles = StyleSheet.create({
 const MenuScreen: FunctionComponent<MenuScreenProps> = ({
   navigation,
 }: MenuScreenProps): React.ReactElement => {
-  const data: MenuItemListInterface[] = [
-    {
-      id: 'learn',
-      title: textPlaceholders.menuScreen.learn,
-      image: <Learn width={'20%'} height={'150%'} />,
-      screenToNavigate: ScreensEnum.LEARN_BASICS,
-    },
-    {
-      id: 'list',
-      title: textPlaceholders.menuScreen.list,
-      image: <Menu width={'20%'} height={'150%'} />,
-      screenToNavigate: ScreensEnum.RECIPE_LIST,
-    },
-    {
-      id: 'myList',
-      title: textPlaceholders.menuScreen.myList,
-      image: <Chef width={'20%'} height={'150%'} />,
-      screenToNavigate: ScreensEnum.MY_RECIPES,
-    },
-    {
-      id: 'add',
-      title: textPlaceholders.menuScreen.addRecipe,
-      image: <Cooking width={'20%'} height={'150%'} />,
-      screenToNavigate: ScreensEnum.ADD_RECIPE,
-    },
-  ];
+  const data: MenuItemListInterface[] = useMemo(
+    () => [
+      {
+        id: 'learn',
+        title: textPlaceholders.menuScreen.learn,
+        image: <Learn width={'20%'} height={'150%'} />,
+        screenToNavigate: ScreensEnum.LEARN_BASICS,
+      },
+      {
+        id: 'list',
+        title: textPlaceholders.menuScreen.list,
+        image: <Menu width={'20%'} height={'150%'} />,
+        screenToNavigate: ScreensEnum.RECIPE_LIST,
+      },
+      {
+        id: 'myList',
+        title: textPlaceholders.menuScreen.myList,
+        image: <Chef width={'20%'} height={'150%'} />,
+        screenToNavigate: ScreensEnum.MY_RECIPES,
+      },
+      {
+        id: 'add',
+        title: textPlaceholders.menuScreen.addRecipe,
+        image: <Cooking width={'20%'} height={'150%'} />,
+        screenToNavigate: ScreensEnum.ADD_RECIPE,
+      },
+    ],
+    [textPlaceholders, ScreensEnum],
+  );
 
   return (
     <View style={styles.container}>

@@ -58,25 +58,29 @@ const styles = StyleSheet.create({
   },
 });
 
-const initialFormValues: Recipe = {
-  title: '',
-  category: '',
-  time: '',
-  description: [],
-  authors: '',
-  isFavourite: false,
-  ingredients: [],
-};
-
 const AddRecipeScreen: FunctionComponent<{}> = (): React.ReactElement => {
   const [isAddedToFavourites, setIsAddedToFavourites] =
     useState<boolean>(false);
   const [time, setTime] = useState<string>('00:00:00');
   const [category, setCategory] = useState<string>('');
+  const [currentPosition, setCurrentPosition] = useState<number>(0);
   const navigation: Route = useNavigation();
 
-  const labels: string[] = ['Basic information', 'Ingredients', 'Description'];
-  const [currentPosition, setCurrentPosition] = useState<number>(0);
+  const initialFormValues: Recipe = useMemo(() => {
+    return {
+      title: '',
+      category: '',
+      time: '',
+      description: [],
+      authors: '',
+      isFavourite: false,
+      ingredients: [],
+    };
+  }, []);
+  const labels: string[] = useMemo(
+    () => ['Basic information', 'Ingredients', 'Description'],
+    [],
+  );
 
   const addToFavourites = useCallback((): void => {
     setIsAddedToFavourites(!isAddedToFavourites);

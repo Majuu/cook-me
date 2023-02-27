@@ -1,9 +1,4 @@
-import React, {
-  Component,
-  FunctionComponent,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
@@ -25,8 +20,8 @@ interface StackedScreensInterface {
 
 const Stack = createStackNavigator();
 
-class App extends Component {
-  private stackScreens: StackedScreensInterface[] = [
+const App: FunctionComponent = () => {
+  const stackScreens: StackedScreensInterface[] = [
     { name: ScreensEnum.INTRO, component: IntroScreen },
     { name: ScreensEnum.MENU, component: MenuScreen },
     { name: ScreensEnum.RECIPE_LIST, component: RecipeListScreen },
@@ -36,27 +31,25 @@ class App extends Component {
     { name: ScreensEnum.RECIPE_DETAILS, component: RecipeDeailsScreen },
   ];
 
-  public render(): ReactNode {
-    return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <FullScreenContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              {this.stackScreens.map(
-                (item: StackedScreensInterface): ReactElement => (
-                  <Stack.Screen
-                    key={item.name}
-                    name={item.name}
-                    component={item.component}
-                  />
-                ),
-              )}
-            </Stack.Navigator>
-          </FullScreenContainer>
-        </NavigationContainer>
-      </Provider>
-    );
-  }
-}
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <FullScreenContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            {stackScreens.map(
+              (item: StackedScreensInterface): ReactElement => (
+                <Stack.Screen
+                  key={item.name}
+                  name={item.name}
+                  component={item.component}
+                />
+              ),
+            )}
+          </Stack.Navigator>
+        </FullScreenContainer>
+      </NavigationContainer>
+    </Provider>
+  );
+};
 
 export default App;

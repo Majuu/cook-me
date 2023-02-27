@@ -1,5 +1,5 @@
 import { Formik, FormikErrors, FormikState } from 'formik';
-import { FunctionComponent, ReactElement, useRef, useState } from 'react';
+import React, { FunctionComponent, ReactElement, useMemo, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import { ingredientUnits } from '../../consts/ingredient-units.const';
@@ -47,11 +47,13 @@ const AddNewIngredient: FunctionComponent<AddNewIngredientProps> = ({
   const ingredientPickerRef = useRef<SelectDropdown>(null);
   const unitPickerRef = useRef<SelectDropdown>(null);
 
-  const newIngredientInitialValues = {
-    name: '',
-    amount: '',
-    unit: '',
-  };
+  const newIngredientInitialValues = useMemo(() => {
+    return {
+      name: '',
+      amount: '',
+      unit: '',
+    };
+  }, []);
 
   const submitForm = ({
     resetForm,

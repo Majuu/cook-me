@@ -1,4 +1,4 @@
-import React, { FunctionComponent, SetStateAction } from 'react';
+import React, { FunctionComponent, SetStateAction, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import CustomText from '../shared/CustomText';
 import CustomPicker from '../shared/CustomPicker';
@@ -49,14 +49,16 @@ const RecipeListNavbar: FunctionComponent<RecipeListNavbarProps> = ({
 }: RecipeListNavbarProps) => {
   const route = useRoute();
   const { title, myRecipesTitle } = textPlaceholders.allRecipes;
-  const isFavouriteRecipesScreen: boolean =
-    route.name === ScreensEnum.MY_RECIPES;
-  const recipeCategories: RecipeCategories[] = [
+  
+  const isFavouriteRecipesScreen: boolean = useMemo(() => route.name === ScreensEnum.MY_RECIPES, [route, ScreensEnum]);
+  
+  const recipeCategories: RecipeCategories[] = useMemo(() => 
+  [
     RecipeCategories.BREAKFAST,
     RecipeCategories.DINNER,
     RecipeCategories.DESSERT,
     RecipeCategories.NONE,
-  ];
+  ], [RecipeCategories])
 
   return (
     <View style={styles.container}>
